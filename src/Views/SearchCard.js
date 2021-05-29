@@ -2,10 +2,14 @@ import {useEffect, useState} from "react";
 import AbilitySearch from "./AbilitySearch";
 import getAbilities from "../services/getAbilities";
 import sortByName from "../utilities/sortByName";
+import NameSearch from "./NameSearch";
+import getPokemons from "../services/getPokemons";
+import sortObjectFunction from "../utilities/sortObjectFunction";
 
 const SearchCard = ({pokeTypes, handleSubmit})=>{
 
-    let FETCHDONE = false;
+    let AbilityFETCHDONE = false;
+    let PokeFETCHDONE = false;
 
     console.log({pokeTypes});
 
@@ -15,6 +19,9 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
     const [textInputToggle, SetTextInputToggle] = useState(false);
     const [selectToggle, SetSelectToggle] = useState(false);
     const [abilityToggle, SetAbilityToggle]= useState(false);
+
+    const [abilitySearchData, SetAbilitySearchData] = useState(null);
+    const [pokemonsSearchData, SetPokemonsSearchData] = useState(null);
 
 
     const changeMethod = (e)=>{
@@ -30,6 +37,7 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
 
                 break
             case 'name':
+                searchByName();
                 SetSearchMethod(e);
                 SetTextInputToggle(true);
                 SetSelectToggle(false);
@@ -63,18 +71,37 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
         SetSelectToggle(false);
         SetTextInputToggle(false);
 
-        if(!FETCHDONE){
+        if(!AbilityFETCHDONE){
             getAbilities()
                 .then(data => {
                     SetAbilitySearchData(sortByName(data.results));
-                    FETCHDONE = true
+                    AbilityFETCHDONE = true;
                 })
         }
+    }
 
+    const searchByName = ()=>{
+
+        SetSelectToggle(false);
+        SetAbilityToggle(false);
+
+        if(!PokeFETCHDONE){
+            getPokemons()
+                .then((data)=>{SetPokemonsSearchData(sortObjectFunction(data.results))
+        })
+        }
 
     }
 
-    const [abilitySearchData, SetAbilitySearchData] = useState(null);
+
+    useEffect(()=>{
+
+        if(pokemonsSearchData){
+            SetTextInputToggle(true);
+        }
+
+    },[pokemonsSearchData])
+
 
     useEffect(()=>{
 
@@ -101,12 +128,9 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                     <option value="ability">Ability</option>
                 </select>
 
-                {textInputToggle&&
+                {pokemonsSearchData&&
                 <div className="search-by-name">
-                    <label htmlFor="search-by-name">Search by {searchMethod}</label>
-                    <input type="text" onChange={(e)=> SetInputValue(e.target.value)}/>
-                    <button>Submit</button>
-
+                    <NameSearch pokemonList={pokemonsSearchData}  />
                 </div>}
 
                 {selectToggle&&

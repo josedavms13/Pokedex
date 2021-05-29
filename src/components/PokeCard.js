@@ -1,15 +1,25 @@
-const PokeCard = () => {
+import {useEffect, useState} from "react";
+
+const PokeCard = ({url}) => {
+
+    const [pokeName, SetPokeName] = useState(null);
+    const [pokeType, SetPokeType] = useState(null)
+    const [pokeImage, SetPokeImage] = useState(null);
+
+
+    useEffect(()=>{
+
+        fetch(url)
+            .then(res=> res.json())
+            .then(data=>console.log(data));
+
+
+    },[url])
 
 
     return (
         <div>
 
-            <h4>Pikachu</h4>
-            <h5>image</h5>
-            <h6>HP</h6>
-            <h6>attk</h6>
-            <h6> 2</h6>
-            <h6> 3</h6>
 
         </div>)
 }
