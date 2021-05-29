@@ -1,4 +1,7 @@
 import {useEffect, useState} from "react";
+import AbilitySearch from "./AbilitySearch";
+import getAbilities from "../services/getAbilities";
+import sortByName from "../utilities/sortByName";
 
 const SearchCard = ({pokeTypes, handleSubmit})=>{
 
@@ -11,8 +14,6 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
 
     const [textInputToggle, SetTextInputToggle] = useState(false);
     const [selectToggle, SetSelectToggle] = useState(false);
-
-
 
 
     const changeMethod = (e)=>{
@@ -49,9 +50,24 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
     }
 
 
+    const tempHandleMoreOptions = ()=>{
+
+        SetSelectToggle(false);
+        SetTextInputToggle(false);
+
+        getAbilities()
+            .then(data=> SetAbilitySearchData(sortByName(data.results)))
+
+
+    }
+
     useEffect(()=>{
         console.log(inputValue);
     },[inputValue])
+
+
+    const [abilitySearchData, SetAbilitySearchData] = useState(null);
+
 
     return(
         <div>
@@ -72,6 +88,7 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                 <div className="search-by-name">
                     <label htmlFor="search-by-name">Search by {searchMethod}</label>
                     <input type="text" onChange={(e)=> SetInputValue(e.target.value)}/>
+                    {searchMethod === 'ability' ? <button onClick={tempHandleMoreOptions}>More Options</button> : false}
                     <button>Submit</button>
 
                 </div>}
@@ -86,6 +103,10 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
 
                     <button>Submit</button>
                 </div>}
+
+
+                {abilitySearchData && <AbilitySearch abilitiesList={abilitySearchData}  />}
+
             </div>
 
 
