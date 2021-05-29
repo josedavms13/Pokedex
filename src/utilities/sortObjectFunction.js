@@ -2,9 +2,8 @@
 
 function sortObjectFunction(object){
 
-    let sortedObject = object.sort((a,b)=> a.name.localeCompare(b.name));
+    return object.sort((a,b)=> a.name.localeCompare(b.name));
 
-    console.log(sortedObject);
 
 }
 

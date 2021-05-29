@@ -1,4 +1,5 @@
 import {useEffect} from "react";
+import PokeCard from "../components/PokeCard";
 
 
 const NameSearch = ({pokemonList})=>{
@@ -16,8 +17,7 @@ const NameSearch = ({pokemonList})=>{
 
             <div className="poke-list">
 
-
-
+                <PokeCard url={'https://pokeapi.co/api/v2/pokemon/460/'}/>
 
 
             </div>
