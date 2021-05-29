@@ -1,6 +1,6 @@
 import './ViewsCss/AbilitySearch.css'
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Pagination from "../components/Pagination";
 
 
@@ -27,6 +27,18 @@ const AbilitySearch = ({abilitiesList})=>{
     const indexOfLastResult = currentPage * resultsPerPage;
     const indexOfFirstResult = indexOfLastResult - resultsPerPage
     const currentResult = abilitiesList.slice(indexOfFirstResult, indexOfLastResult);
+
+
+    useEffect(()=>{
+
+        if(searchInput === ''){
+            SetResultsPerPage(30)
+        }
+        else{
+            pagination(0)
+        }
+
+    },[searchInput])
 
 
     // Change page
@@ -58,8 +70,7 @@ const AbilitySearch = ({abilitiesList})=>{
 
                 <div className="ability-block">
 
-                    {abilitiesList &&
-                    currentResult.filter((value)=>{
+                    {abilitiesList && currentResult.filter((value)=> {
                         if(searchInput === ''){
                             return value
                         }
