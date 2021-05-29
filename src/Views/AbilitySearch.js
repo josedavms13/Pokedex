@@ -6,10 +6,18 @@ import Pagination from "../components/Pagination";
 
 const AbilitySearch = ({abilitiesList})=>{
 
+    //region Searching filter
+
+    const [searchInput, SetSearchInput] = useState('')
 
 
 
-    // Pagination
+
+
+    //endregion searching filter
+
+
+    //region Pagination
 
     const [currentPage, SetCurrentPage] = useState(1);
     const [resultsPerPage, SetResultsPerPage] = useState(30)
@@ -34,6 +42,8 @@ const AbilitySearch = ({abilitiesList})=>{
         }
     }
 
+    //endregion Pagination
+
     return(
         <div>
             <div className="search-options">
@@ -42,14 +52,21 @@ const AbilitySearch = ({abilitiesList})=>{
 
                 <div className="search-by-type">
                     <label htmlFor="ability-name">Filter name</label>
-                    <input type="text" name={'ability-name'}/>
+                    <input type="text" name={'ability-name'} onChange={(e)=>{SetSearchInput(e.target.value)}}/>
                     <button>Submit</button>
                 </div>
 
                 <div className="ability-block">
 
                     {abilitiesList &&
-                    currentResult.map((ability, key)=> <button key={key} value={ability}>{ability}</button>
+                    currentResult.filter((value)=>{
+                        if(searchInput === ''){
+                            return value
+                        }
+                        else if(value.toLowerCase().includes(searchInput.toLowerCase())){
+                            return value
+                        }
+                    }) .map((ability, key)=> <button key={key} value={ability}>{ability}</button>
                     )
 
 
@@ -69,12 +86,6 @@ const AbilitySearch = ({abilitiesList})=>{
 
 
             </div>
-
-
-            {abilitiesList&&
-            <div className="abilities-block">
-
-            </div>}
 
 
         </div>
