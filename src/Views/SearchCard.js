@@ -5,7 +5,7 @@ import sortByName from "../utilities/sortByName";
 
 const SearchCard = ({pokeTypes, handleSubmit})=>{
 
-
+    let FETCHDONE = false;
 
     console.log({pokeTypes});
 
@@ -14,10 +14,11 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
 
     const [textInputToggle, SetTextInputToggle] = useState(false);
     const [selectToggle, SetSelectToggle] = useState(false);
+    const [abilityToggle, SetAbilityToggle]= useState(false);
 
 
     const changeMethod = (e)=>{
-        // if user choose name or ability has to type in the text field.
+        // if user choose name has to type in the text field.
         // if user choose search by type has to select it.
 
         switch (e) {
@@ -25,21 +26,28 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                 SetSearchMethod(e);
                 SetTextInputToggle(false);
                 SetSelectToggle(false);
+                SetAbilityToggle(false);
+
                 break
             case 'name':
                 SetSearchMethod(e);
                 SetTextInputToggle(true);
                 SetSelectToggle(false);
+                SetAbilityToggle(false);
+
                 break
             case 'type':
                 SetSearchMethod(e);
                 SetTextInputToggle(false);
                 SetSelectToggle(true);
+                SetAbilityToggle(false);
 
                 break
             case 'ability':
+                searchByAbilities()
                 SetSearchMethod(e);
-                SetTextInputToggle(true);
+
+                SetTextInputToggle(false);
                 SetSelectToggle(false);
 
                 break
@@ -50,23 +58,32 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
     }
 
 
-    const tempHandleMoreOptions = ()=>{
+    const searchByAbilities = ()=>{
 
         SetSelectToggle(false);
         SetTextInputToggle(false);
 
-        getAbilities()
-            .then(data=> SetAbilitySearchData(sortByName(data.results)))
+        if(!FETCHDONE){
+            getAbilities()
+                .then(data => {
+                    SetAbilitySearchData(sortByName(data.results));
+                    FETCHDONE = true
+                })
+        }
 
 
     }
 
-    useEffect(()=>{
-        console.log(inputValue);
-    },[inputValue])
-
-
     const [abilitySearchData, SetAbilitySearchData] = useState(null);
+
+    useEffect(()=>{
+
+        if(abilitySearchData){
+            SetAbilityToggle(true);
+        }
+    },[abilitySearchData])
+
+
 
 
     return(
@@ -88,7 +105,6 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                 <div className="search-by-name">
                     <label htmlFor="search-by-name">Search by {searchMethod}</label>
                     <input type="text" onChange={(e)=> SetInputValue(e.target.value)}/>
-                    {searchMethod === 'ability' ? <button onClick={tempHandleMoreOptions}>More Options</button> : false}
                     <button>Submit</button>
 
                 </div>}
@@ -105,7 +121,7 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                 </div>}
 
 
-                {abilitySearchData && <AbilitySearch abilitiesList={abilitySearchData}  />}
+                {abilityToggle && <AbilitySearch abilitiesList={abilitySearchData}  />}
 
             </div>
 

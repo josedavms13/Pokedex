@@ -35,10 +35,10 @@ const AbilitySearch = ({abilitiesList})=>{
             SetResultsPerPage(30)
         }
         else{
-            pagination(0)
+            SetResultsPerPage(abilitiesList.length);
         }
 
-    },[searchInput])
+    },[searchInput, abilitiesList])
 
 
     // Change page
@@ -65,19 +65,19 @@ const AbilitySearch = ({abilitiesList})=>{
                 <div className="search-by-type">
                     <label htmlFor="ability-name">Filter name</label>
                     <input type="text" name={'ability-name'} onChange={(e)=>{SetSearchInput(e.target.value)}}/>
-                    <button>Submit</button>
                 </div>
 
                 <div className="ability-block">
 
-                    {abilitiesList && currentResult.filter((value)=> {
+                    {/* eslint-disable-next-line array-callback-return */}
+                    {abilitiesList &&currentResult.filter((element) =>{
                         if(searchInput === ''){
-                            return value
+                            return element
                         }
-                        else if(value.toLowerCase().includes(searchInput.toLowerCase())){
-                            return value
+                        else if(element.toLowerCase().includes(searchInput.toLowerCase())){
+                            return element
                         }
-                    }) .map((ability, key)=> <button key={key} value={ability}>{ability}</button>
+                    }).map((ability, key)=> <button key={key} value={ability}>{ability}</button>
                     )
 
 
