@@ -35,6 +35,7 @@ const AbilitySearch = ({abilitiesList})=>{
             SetResultsPerPage(30)
         }
         else{
+            SetCurrentPage(1);
             SetResultsPerPage(abilitiesList.length);
         }
 
