@@ -1,6 +1,6 @@
 import './ViewsCss/AbilitySearch.css'
 
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import Pagination from "../components/Pagination";
 
 
@@ -49,7 +49,7 @@ const AbilitySearch = ({abilitiesList})=>{
                 <div className="ability-block">
 
                     {abilitiesList &&
-                    currentResult.map((ability)=> <button key={ability.key} value={ability}>{ability}</button>
+                    currentResult.map((ability, key)=> <button key={key} value={ability}>{ability}</button>
                     )
 
 

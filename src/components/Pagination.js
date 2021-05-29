@@ -37,7 +37,7 @@ const Pagination = ({resultsPerPage, totalResults, pagination})=>{
     return(
         <nav className={'pagination'}>
 
-                {pageNumber.map((number =>(<button onClick={(e)=> pagination(e.target.value)} value={number}>{number}</button>
+                {pageNumber.map((number =>(<button onClick={(e)=> pagination(e.target.value)} value={number} key={number}>{number}</button>
                 )))}
                 <button onClick={()=>allButtonHandler()}>{buttonLegend}</button>
 
