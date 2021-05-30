@@ -128,7 +128,7 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                     <option value="ability">Ability</option>
                 </select>
 
-                {pokemonsSearchData&&
+                {SetTextInputToggle&&
                 <div className="search-by-name">
                     <NameSearch pokemonList={pokemonsSearchData}  />
                 </div>}
