@@ -5,22 +5,27 @@ import sortByName from "../utilities/sortByName";
 import NameSearch from "./NameSearch";
 import getPokemons from "../services/getPokemons";
 import sortObjectFunction from "../utilities/sortObjectFunction";
+import getTypes from "../services/getTypes";
 
-const SearchCard = ({pokeTypes, handleSubmit})=>{
+const SearchCard = ({handleSubmit})=>{
+
+
 
     let AbilityFETCHDONE = false;
     let PokeFETCHDONE = false;
+    let TypeFETCHDONE = false;
 
-    console.log({pokeTypes});
 
     const [searchMethod, SetSearchMethod] = useState(0);
     const [inputValue, SetInputValue] = useState(null)
 
     const [textInputToggle, SetTextInputToggle] = useState(false);
-    const [selectToggle, SetSelectToggle] = useState(false);
+    const [selectTypesToggle, SetSelectTypesToggle] = useState(false);
     const [abilityToggle, SetAbilityToggle]= useState(false);
 
+
     const [abilitySearchData, SetAbilitySearchData] = useState(null);
+    const [pokeTypes, SetPokeTypes] = useState(null)
     const [pokemonsSearchData, SetPokemonsSearchData] = useState(null);
 
 
@@ -32,31 +37,33 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
             case 'none-selected':
                 SetSearchMethod(e);
                 SetTextInputToggle(false);
-                SetSelectToggle(false);
+                SetSelectTypesToggle(false);
                 SetAbilityToggle(false);
 
                 break
             case 'name':
-                searchByName();
+                setSearchByName();
                 SetSearchMethod(e);
                 SetTextInputToggle(true);
-                SetSelectToggle(false);
+                SetSelectTypesToggle(false);
                 SetAbilityToggle(false);
 
                 break
             case 'type':
+                setSearchByType();
                 SetSearchMethod(e);
                 SetTextInputToggle(false);
-                SetSelectToggle(true);
+                SetSelectTypesToggle(true);
                 SetAbilityToggle(false);
 
                 break
             case 'ability':
-                searchByAbilities()
+                setSearchByAbilities()
                 SetSearchMethod(e);
 
+                SetAbilityToggle(true);
                 SetTextInputToggle(false);
-                SetSelectToggle(false);
+                SetSelectTypesToggle(false);
 
                 break
             default:
@@ -65,11 +72,31 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
         }
     }
 
+    const setSearchByName = ()=>{
 
-    const searchByAbilities = ()=>{
 
-        SetSelectToggle(false);
-        SetTextInputToggle(false);
+        if(!PokeFETCHDONE){
+            getPokemons()
+                .then((data)=>{SetPokemonsSearchData(sortObjectFunction(data.results))
+                })
+            PokeFETCHDONE = true;
+        }
+
+    }
+
+
+    const setSearchByType =()=>{
+
+        if(!TypeFETCHDONE) {
+            getTypes()
+                .then(data => SetPokeTypes(data.results));
+
+            TypeFETCHDONE = true;
+        }
+    }
+
+    const setSearchByAbilities = ()=>{
+
 
         if(!AbilityFETCHDONE){
             getAbilities()
@@ -80,35 +107,16 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
         }
     }
 
-    const searchByName = ()=>{
 
-        SetSelectToggle(false);
-        SetAbilityToggle(false);
 
-        if(!PokeFETCHDONE){
-            getPokemons()
-                .then((data)=>{SetPokemonsSearchData(sortObjectFunction(data.results))
-        })
-        }
+    const searchByType =()=>{
+
+        console.log(inputValue);
+
+
 
     }
 
-
-    useEffect(()=>{
-
-        if(pokemonsSearchData){
-            SetTextInputToggle(true);
-        }
-
-    },[pokemonsSearchData])
-
-
-    useEffect(()=>{
-
-        if(abilitySearchData){
-            SetAbilityToggle(true);
-        }
-    },[abilitySearchData])
 
 
 
@@ -128,12 +136,12 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                     <option value="ability">Ability</option>
                 </select>
 
-                {textInputToggle&&
+                {(textInputToggle&&pokemonsSearchData)&&
                 <div className="search-by-name">
                     <NameSearch pokemonList={pokemonsSearchData}  />
                 </div>}
 
-                {selectToggle&&
+                {(selectTypesToggle&&pokeTypes)&&
                 <div className="search-by-type">
                     <select name="type-selection" id="type-selection" onChange={(e)=> SetInputValue(e.target.value)}>
                         {pokeTypes.map((element) => {
@@ -141,11 +149,11 @@ const SearchCard = ({pokeTypes, handleSubmit})=>{
                         })}
                     </select>
 
-                    <button>Submit</button>
+                    <button onClick={()=>{searchByType()}}>Submit</button>
                 </div>}
 
 
-                {abilityToggle && <AbilitySearch abilitiesList={abilitySearchData}  />}
+                {(abilityToggle && abilitySearchData) && <AbilitySearch abilitiesList={abilitySearchData}  />}
 
             </div>
 
