@@ -1,10 +1,10 @@
-import './ViewsCss/AbilitySearch.css'
+import '../Views/ViewsCss/AbilitySearch.css'
 
 import {useEffect, useState} from "react";
-import Pagination from "../components/Pagination";
+import Pagination from "./Pagination";
 
 
-const AbilitySearch = ({abilitiesList})=>{
+const AbilitySearch = ({abilitiesList, abilitySelected})=>{
 
     //region Searching filter
 
@@ -78,7 +78,7 @@ const AbilitySearch = ({abilitiesList})=>{
                         else if(element.toLowerCase().includes(searchInput.toLowerCase())){
                             return element
                         }
-                    }).map((ability, key)=> <button key={key} value={ability}>{ability}</button>
+                    }).map((ability, key)=> <button onClick={(e)=>{abilitySelected(e.target.value)}} key={key} value={ability}>{ability}</button>
                     )
 
 

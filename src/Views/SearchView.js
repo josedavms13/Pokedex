@@ -1,13 +1,13 @@
 import {useEffect, useState} from "react";
-import AbilitySearch from "./AbilitySearch";
+import AbilitySearch from "../components/AbilitySearch";
 import getAbilities from "../services/getAbilities";
 import sortByName from "../utilities/sortByName";
-import NameSearch from "./NameSearch";
+import NameSearch from "../components/NameSearch";
 import getPokemons from "../services/getPokemons";
 import sortObjectFunction from "../utilities/sortObjectFunction";
 import getTypes from "../services/getTypes";
 
-const SearchCard = ({handleSubmit})=>{
+const SearchView = ({handleSubmit})=>{
 
 
 
@@ -109,16 +109,25 @@ const SearchCard = ({handleSubmit})=>{
 
 
 
-    const searchByType =()=>{
+    const searchByName =(data)=>{
 
-        console.log(inputValue);
-
+        SetInputValue(data);
+        handleSubmit([1, data]);
 
 
     }
 
+    const searchByType =()=>{
+
+        handleSubmit([2, inputValue]);
+
+    }
 
 
+    const searchByAbility = (data)=>{
+        SetInputValue(data);
+        handleSubmit([3,data])
+    }
 
 
     return(
@@ -138,7 +147,7 @@ const SearchCard = ({handleSubmit})=>{
 
                 {(textInputToggle&&pokemonsSearchData)&&
                 <div className="search-by-name">
-                    <NameSearch pokemonList={pokemonsSearchData}  />
+                    <NameSearch pokemonList={pokemonsSearchData} searchResult={(data)=> searchByName(data)} />
                 </div>}
 
                 {(selectTypesToggle&&pokeTypes)&&
@@ -153,7 +162,7 @@ const SearchCard = ({handleSubmit})=>{
                 </div>}
 
 
-                {(abilityToggle && abilitySearchData) && <AbilitySearch abilitiesList={abilitySearchData}  />}
+                {(abilityToggle && abilitySearchData) && <AbilitySearch abilitiesList={abilitySearchData} abilitySelected={(data)=>searchByAbility(data)} />}
 
             </div>
 
@@ -167,4 +176,4 @@ const SearchCard = ({handleSubmit})=>{
 
     )
 }
-export default SearchCard
+export default SearchView

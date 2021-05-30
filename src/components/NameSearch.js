@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import PokeNameSuggest from "../components/PokeNameSuggest";
+import PokeNameSuggest from "./PokeNameSuggest";
 import filterNames from "../utilities/filterNamesOfObjectArray";
 
 
-const NameSearch = ({pokemonList})=>{
+const NameSearch = ({pokemonList, searchResult})=>{
 
     const [suggestToggle, SetSuggestToggle] = useState(false);
 
@@ -30,20 +30,15 @@ const NameSearch = ({pokemonList})=>{
 
 
 
-    function handleSubmit(){
-
-
-        console.log('search ' + searchValues);
-
-    }
 
 
     return(
         <div className={'name-search'}>
             <label htmlFor="{'search-name'}">Type name</label>
             <input type="text" value={searchValues} name={'search-name'} onChange={(e)=>{SetSearchValues(e.target.value)}}/>
-            {suggestToggle && <PokeNameSuggest pokeList={arrayOfNames} searchFilter={searchValues} handleSubmit={(data)=>{SetSearchValues(data)}} />}
-            <button onClick={()=>{handleSubmit([(searchValues.toLowerCase()), 1])}}>Submit</button>
+            {suggestToggle &&
+            <PokeNameSuggest pokeList={arrayOfNames} searchFilter={searchValues} handleSubmit={(data)=>{SetSearchValues(data)}} />}
+            <button onClick={()=>{searchResult(searchValues.toLowerCase())}}>Submit</button>
 
 
         </div>
