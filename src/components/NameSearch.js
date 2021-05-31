@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import PokeNameSuggest from "./PokeNameSuggest";
+import {Link} from 'react-router-dom'
+
 import filterNames from "../utilities/filterNamesOfObjectArray";
 
 
@@ -38,7 +40,10 @@ const NameSearch = ({pokemonList, searchResult})=>{
             <input type="text" value={searchValues} name={'search-name'} onChange={(e)=>{SetSearchValues(e.target.value)}}/>
             {suggestToggle &&
             <PokeNameSuggest pokeList={arrayOfNames} searchFilter={searchValues} handleSubmit={(data)=>{SetSearchValues(data)}} />}
-            <button onClick={()=>{searchResult(searchValues.toLowerCase())}}>Submit</button>
+            <Link to={`/pokedex/pokemon/${searchValues.toLowerCase()}`}>
+
+                <button>Submit</button>
+            </Link>
 
 
         </div>

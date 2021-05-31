@@ -113,30 +113,21 @@ const SearchView = ({handleSubmit})=>{
     const searchByName =(data)=>{
 
         SetInputValue(data);
-        handleSubmit({
-            mode: 1,
-            data: data,
-        })
+
 
 
     }
 
     const searchByType =()=>{
 
-        handleSubmit({
-            mode: 2,
-            data: inputValue,
-        })
+
 
     }
 
 
     const searchByAbility = (data)=>{
         SetInputValue(data);
-        handleSubmit({
-            mode: 3,
-            data: data,
-        })
+
     }
 
 

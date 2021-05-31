@@ -7,7 +7,8 @@ function fetchByName (name){
     const urlName = name.toLowerCase().trim();
 
 
-
+    return fetch(baseUrl+urlName)
+        .then(res=> res.json());
 
 
 

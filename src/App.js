@@ -10,29 +10,7 @@ import PokedexTypes from "./Views/PokedexTypes";
 function App() {
 
 
-    const [infoToFetch, SetInfoToFetch] = useState(null);
 
-    function handleSearch(search) {
-
-        console.log(search)
-
-        switch (search.mode){
-            case 1:
-                console.log('search by name');
-                break
-            case 2:
-                console.log('search by type')
-                SetInfoToFetch(search.data);
-                break
-            case 3:
-                console.log('search by abilities');
-                break
-            default:
-                break
-        }
-
-
-    }
 
 
     return (
@@ -51,9 +29,7 @@ function App() {
                     <Redirect to={'/'}/>
                 </Route>
 
-                <Route  path="/" > <SearchView handleSubmit={(data) => {
-                    handleSearch(data)
-                }}/> </Route>
+                <Route  path="/" > <SearchView /> </Route>
 
 
 
