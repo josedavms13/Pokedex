@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
-
+import './ComponentsCss/PokeCard.css'
+import {Link} from 'react-router-dom'
 const PokeCard = ({url}) => {
-
 
 
     const [pokeName, SetPokeName] = useState(null);
@@ -10,17 +10,16 @@ const PokeCard = ({url}) => {
     const [pokeImage, SetPokeImage] = useState(null);
 
 
-
-    useEffect(()=>{
+    useEffect(() => {
 
         fetch(url)
-            .then(res=> res.json())
-            .then(data=> {
+            .then(res => res.json())
+            .then(data => {
                 console.log(data);
 
                 SetPokeName(data.name);
                 SetPokeTypeA(data.types[0].type.name);
-                if(data.types.length > 1){
+                if (data.types.length > 1) {
                     SetPokeTypeB(data.types[1].type.name);
                 }
                 SetPokeImage(data.sprites.front_default);
@@ -29,24 +28,34 @@ const PokeCard = ({url}) => {
 
         console.log(url);
 
-    },[url])
+    }, [url])
 
 
     return (
-        <div>
-            <h1>Name</h1>
-            <h2>{pokeName}</h2>
-            <h1>Type 1</h1>
-            <h2>{pokeTypeA}</h2>
-            {
-                pokeTypeB && <div>
-                    <h2>Type 2</h2>
-                    <h2>{pokeTypeB}</h2>
+        <Link to={`/pokedex/pokemon/${pokeName}`}>
+
+            <div className={'poke-card'}>
+                <div className="image-container">
+
+                    <img src={pokeImage} alt={pokeName}/>
                 </div>
 
-            }
-            <img src={pokeImage} alt={pokeName}/>
+                <div className="poke-info">
 
-        </div>)
+                    <h1>{pokeName}</h1>
+                    <h2>Type 1</h2>
+                    <h3>{pokeTypeA}</h3>
+                    {
+                        pokeTypeB && <div>
+                            <h2>Type 2</h2>
+                            <h3>{pokeTypeB}</h3>
+                        </div>
+
+                    }
+                </div>
+
+            </div>
+        </Link>
+    )
 }
 export default PokeCard

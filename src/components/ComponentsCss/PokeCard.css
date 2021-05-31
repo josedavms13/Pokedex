@@ -1,0 +1,13 @@
+
+
+.poke-card{
+    background-color: orangered;
+    width: 30vw;
+    display: flex;
+}
+.poke-card:hover{
+    background-color: orange;
+}
+.poke-info{
+    height: 100%;
+}

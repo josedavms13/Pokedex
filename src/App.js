@@ -1,8 +1,8 @@
 import './App.css';
 import {useEffect, useState} from "react";
 import SearchView from "./Views/SearchView"
-import Pokedex from "./Views/Pokedex";
-import {HashRouter as Router, Switch, Route, Redirect, useParams} from "react-router-dom";
+import BigPokedex from "./Views/BigPokedex";
+import {HashRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import fetchByType from "./services/fetchByType";
 import PokedexTypes from "./Views/PokedexTypes";
 
@@ -39,6 +39,9 @@ function App() {
         <Router>
             <Switch>
 
+                <Route path={`/pokedex/pokemon/:name`} >
+                    <BigPokedex />
+                </Route>
 
                 <Route path={`/pokedex/types/:type`}>
                     <PokedexTypes  />
@@ -51,6 +54,7 @@ function App() {
                 <Route  path="/" > <SearchView handleSubmit={(data) => {
                     handleSearch(data)
                 }}/> </Route>
+
 
 
 
