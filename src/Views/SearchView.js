@@ -168,7 +168,7 @@ const SearchView = ({handleSubmit})=>{
                         })}
                     </select>
 
-                    <Link to={'/pokedex/types'} > <button onClick={()=>{searchByType()}}>Submit</button></Link>
+                    <Link to={`/pokedex/types/${inputValue}`} > <button onClick={()=>{searchByType()}}>Submit</button></Link>
                 </div>}
 
 

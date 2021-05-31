@@ -1,17 +1,34 @@
 import {useParams} from "react-router-dom";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
+import fetchByType from "../services/fetchByType";
 
 const PokedexTypes = ()=>{
 
 
 
-    // useEffect(()=>{
-    //     console.log(type);
-    // },[type])
-
     const {type}= useParams()
 
-    console.log(type);
+    const [pokes, SetPokes] = useState(null);
+
+
+
+    useEffect(()=>{
+        if(type){
+
+            fetchByType(type)
+                .then(data=> SetPokes(data))
+
+        }
+        console.log(type);
+    },[type])
+
+
+    useEffect(()=>{
+        console.log(pokes
+        )
+    },[pokes])
+
+
     return(
         <div>
             <h1>Poketypes</h1>
