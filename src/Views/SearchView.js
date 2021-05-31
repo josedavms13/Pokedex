@@ -6,6 +6,7 @@ import NameSearch from "../components/NameSearch";
 import getPokemons from "../services/getPokemons";
 import sortObjectFunction from "../utilities/sortObjectFunction";
 import getTypes from "../services/getTypes";
+import {Link} from "react-router-dom";
 
 const SearchView = ({handleSubmit})=>{
 
@@ -112,21 +113,30 @@ const SearchView = ({handleSubmit})=>{
     const searchByName =(data)=>{
 
         SetInputValue(data);
-        handleSubmit([1, data]);
+        handleSubmit({
+            mode: 1,
+            data: data,
+        })
 
 
     }
 
     const searchByType =()=>{
 
-        handleSubmit([2, inputValue]);
+        handleSubmit({
+            mode: 2,
+            data: inputValue,
+        })
 
     }
 
 
     const searchByAbility = (data)=>{
         SetInputValue(data);
-        handleSubmit([3,data])
+        handleSubmit({
+            mode: 3,
+            data: data,
+        })
     }
 
 
@@ -158,7 +168,7 @@ const SearchView = ({handleSubmit})=>{
                         })}
                     </select>
 
-                    <button onClick={()=>{searchByType()}}>Submit</button>
+                    <Link to={'/pokedex/types'} > <button onClick={()=>{searchByType()}}>Submit</button></Link>
                 </div>}
 
 

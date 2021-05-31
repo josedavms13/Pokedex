@@ -2,25 +2,57 @@ import './App.css';
 import {useEffect, useState} from "react";
 import SearchView from "./Views/SearchView"
 import Pokedex from "./Views/Pokedex";
-import {HashRouter as Router, Switch, Route} from "react-router-dom";
+import {HashRouter as Router, Switch, Route, Redirect, useParams} from "react-router-dom";
+import fetchByType from "./services/fetchByType";
+import PokedexTypes from "./Views/PokedexTypes";
+
 
 function App() {
 
-  function handleSearch(data){
+
+    const [infoToFetch, SetInfoToFetch] = useState(null);
+
+    function handleSearch(search) {
+
+        console.log(search)
+
+        switch (search.mode){
+            case 1:
+                console.log('search by name');
+                break
+            case 2:
+                console.log('search by type')
+                SetInfoToFetch(search.data);
+                break
+            case 3:
+                console.log('search by abilities');
+                break
+            default:
+                break
+        }
 
 
-console.log(data);
-
-
-
-  }
+    }
 
 
     return (
         <Router>
             <Switch>
-              <Route path="/pokedex"> <Pokedex  /> </Route>
-              <Route path="/"> <SearchView handleSubmit={(data)=>{handleSearch(data)}} /> </Route>
+
+
+                <Route path={`/pokedex/types/:type`}>
+                    <PokedexTypes  />
+                </Route>
+
+                <Route path={'/pokedex'}>
+                    <Redirect to={'/'}/>
+                </Route>
+
+                <Route  path="/" > <SearchView handleSubmit={(data) => {
+                    handleSearch(data)
+                }}/> </Route>
+
+
 
             </Switch>
 

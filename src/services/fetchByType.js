@@ -3,7 +3,7 @@
 function fetchByType(type){
 
 
-    const baseUrl = `https://pokeapi.co/api/v2/${type}`
+    const baseUrl = `https://pokeapi.co/api/v2/type/${type}`
 
 
 
