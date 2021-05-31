@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import fetchByName from "../services/fetchByName";
 import fetchByType from "../services/fetchByType";
@@ -49,7 +49,7 @@ const BigPokedex = () => {
                 .then((data)=> {
                     console.log(data)
 
-                    SetImage(data.sprites.other.dream_world.front_default);
+                    SetImage(setImageFunct(data.sprites))
                     SetPokeName(data.name.toUpperCase());
                     SetBaseHp(data.stats[0].base_stat);
                     SetBaseAttak(data.stats[1].base_stat);
@@ -77,6 +77,16 @@ const BigPokedex = () => {
 
     //endregion fetch by received params
 
+
+    function setImageFunct(sprites){
+
+        if(sprites.other.dream_world.front_default){
+            return sprites.other.dream_world.front_default
+        }else{
+            return sprites.front_default
+        }
+
+    }
 
     useEffect(()=>{
         console.log(abilities);
@@ -129,6 +139,10 @@ const BigPokedex = () => {
 
     return (
         <div>
+            <Link to={'/'} >
+                <button>Home</button>
+            </Link>
+
             <h1>{pokeName}</h1>
 
 
