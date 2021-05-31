@@ -17,6 +17,10 @@ function App() {
         <Router>
             <Switch>
 
+                <Route path={'/pokedex/abilities/:ability'}>
+                    <PokedexTypes />
+                </Route>
+
                 <Route path={`/pokedex/pokemon/:name`} >
                     <BigPokedex />
                 </Route>

@@ -1,4 +1,4 @@
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ReactPaginate from 'react-paginate'
 
@@ -7,29 +7,29 @@ import PokeCard from "../components/PokeCard";
 
 
 
-const PokedexTypes = ()=>{
+const PokeAbilities = ()=>{
 
 
     //region Get param from URL and fetch
 
-    const {type}= useParams()
+    const {ability}= useParams()
 
     const [pokes, SetPokes] = useState(null);
 
 
 
     useEffect(()=>{
-        if(type){
+        if(ability){
 
-            fetchByType(type)
+            fetchByType(ability)
                 .then(data=> SetPokes(data.pokemon))
 
         }
-    },[type])
+    },[ability])
 
 
 
- // endregion get params from url and fetch
+    // endregion get params from url and fetch
 
     //region Paginate
 
@@ -69,12 +69,9 @@ const PokedexTypes = ()=>{
 
     return(
         <div>
-            <Link to={'/'}>
-                <button>home</button>
-            </Link>
 
             {cardsToShow && cardsToShow.map((element, key)=>{
-               return ( <PokeCard url={element.pokemon.url} key={key}/>)
+                return ( <PokeCard url={element.pokemon.url} key={key}/>)
             })}
             <ReactPaginate
                 previousLabel={'Previous'}
@@ -92,4 +89,4 @@ const PokedexTypes = ()=>{
         </div>
     )
 }
-export default PokedexTypes
+export default PokeAbilities
