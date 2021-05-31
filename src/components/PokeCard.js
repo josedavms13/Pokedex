@@ -2,6 +2,8 @@ import {useEffect, useState} from "react";
 
 const PokeCard = ({url}) => {
 
+
+
     const [pokeName, SetPokeName] = useState(null);
     const [pokeTypeA, SetPokeTypeA] = useState(null)
     const [pokeTypeB, SetPokeTypeB] = useState(null)
@@ -18,7 +20,9 @@ const PokeCard = ({url}) => {
 
                 SetPokeName(data.name);
                 SetPokeTypeA(data.types[0].type.name);
-                SetPokeTypeB(data.types[1].type.name);
+                if(data.types.length > 1){
+                    SetPokeTypeB(data.types[1].type.name);
+                }
                 SetPokeImage(data.sprites.front_default);
             });
 
