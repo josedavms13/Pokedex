@@ -5,6 +5,7 @@ import BigPokedex from "./Views/BigPokedex";
 import {HashRouter as Router, Switch, Route, Redirect} from "react-router-dom";
 import fetchByType from "./services/fetchByType";
 import PokedexTypes from "./Views/PokedexTypes";
+import PokedexAbilities from "./Views/PokedexAbilities";
 
 
 function App() {
@@ -17,8 +18,8 @@ function App() {
         <Router>
             <Switch>
 
-                <Route path={'/pokedex/abilities/:ability'}>
-                    <PokedexTypes />
+                <Route path={`/pokedex/abilities/:ability`}>
+                    <PokedexAbilities />
                 </Route>
 
                 <Route path={`/pokedex/pokemon/:name`} >

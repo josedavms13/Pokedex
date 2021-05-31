@@ -1,32 +1,33 @@
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ReactPaginate from 'react-paginate'
 
 import fetchByType from "../services/fetchByType";
 import PokeCard from "../components/PokeCard";
+import fetchByAbility from "../services/fetchByAbility";
 
 
-
-const PokeAbilities = ()=>{
+const PokeAbilities = () => {
 
 
     //region Get param from URL and fetch
 
-    const {ability}= useParams()
+    const {ability} = useParams()
 
     const [pokes, SetPokes] = useState(null);
 
 
+    useEffect(() => {
+        if (ability) {
 
-    useEffect(()=>{
-        if(ability){
+            fetchByAbility(ability)
+                .then(data => {
 
-            fetchByType(ability)
-                .then(data=> SetPokes(data.pokemon))
 
+                    SetPokes(data.pokemon)
+                });
         }
-    },[ability])
-
+    }, [ability])
 
 
     // endregion get params from url and fetch
@@ -45,39 +46,56 @@ const PokeAbilities = ()=>{
     const [pageCount, SetPageCount] = useState(null)
 
 
-    const [pagesToShow, SetPagesToShow]= useState(10)
+    const [pagesToShow] = useState(10)
 
-    useEffect(()=>{
-        if(pokes){
+
+    const [noPokeMessageToggle, SetNoPokeMessageToggle] = useState(false)
+
+    useEffect(() => {
+
+
+        if (pokes) {
             SetCardsToShow(pokes.slice(pagesViewed, pagesViewed + cardsPerPage))
-            SetPageCount( Math.ceil((pokes.length/cardsPerPage)))
+            SetPageCount(Math.ceil((pokes.length / cardsPerPage)))
+
+            if (pokes.length === 0) {
+                SetNoPokeMessageToggle(true);
+            } else {
+                SetNoPokeMessageToggle(false);
+
+            }
         }
 
-    },[pokes, pageNumber, cardsPerPage, pagesViewed])
+    }, [pokes, pageNumber, cardsPerPage, pagesViewed])
 
 
-    function changePage({selected}){
+    function changePage({selected}) {
         SetPageNumber(selected);
 
 
     }
 
 
-
-
     //endregion paginate
 
-    return(
+    return (
         <div>
+            <Link to={'/'}>
+                <button>home</button>
+            </Link>
 
-            {cardsToShow && cardsToShow.map((element, key)=>{
-                return ( <PokeCard url={element.pokemon.url} key={key}/>)
+            {noPokeMessageToggle&&<div className="no-pokes-available">
+<h1>There is no pokemons registered with that ability in database</h1>
+            </div>}
+
+            {cardsToShow && cardsToShow.map((element, key) => {
+                return (<PokeCard url={element.pokemon.url} key={key}/>)
             })}
             <ReactPaginate
                 previousLabel={'Previous'}
                 nextLabel={'next'}
                 pageCount={pageCount}
-                pageRangeDisplayed={(pagesToShow-2)}
+                pageRangeDisplayed={(pagesToShow - 2)}
                 marginPagesDisplayed={0}
                 onPageChange={changePage}
                 containerClassName={'pagination'}

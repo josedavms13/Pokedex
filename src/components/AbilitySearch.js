@@ -2,7 +2,7 @@ import '../Views/ViewsCss/AbilitySearch.css'
 
 import {useEffect, useState} from "react";
 import Pagination from "./Pagination";
-
+import {Link} from "react-router-dom"
 
 const AbilitySearch = ({abilitiesList, abilitySelected})=>{
 
@@ -78,7 +78,7 @@ const AbilitySearch = ({abilitiesList, abilitySelected})=>{
                         else if(element.toLowerCase().includes(searchInput.toLowerCase())){
                             return element
                         }
-                    }).map((ability, key)=> <button onClick={(e)=>{abilitySelected(e.target.value)}} key={key} value={ability}>{ability}</button>
+                    }).map((ability, key)=> <Link key={key}  to={`/pokedex/abilities/${ability}`}> <button onClick={(e)=>{abilitySelected(e.target.value)}} value={ability}>{ability}</button></Link>
                     )
 
 
