@@ -11,3 +11,4 @@ const LogOut =()=>{
         <button onClick={reset}>LogOut</button>
     )
 }
+export default LogOut

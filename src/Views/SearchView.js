@@ -131,6 +131,7 @@ const SearchView = ({handleSubmit})=>{
 
     return(
         <div>
+            <LogOut />
             <h1>Hello {name}</h1>
             <div>
                 <label htmlFor="search-type">Search by...</label>

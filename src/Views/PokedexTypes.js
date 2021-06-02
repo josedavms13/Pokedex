@@ -69,7 +69,7 @@ const PokedexTypes = ()=>{
 
     return(
         <div>
-            <Link to={'/'}>
+            <Link to={'/pokedex'}>
                 <button>home</button>
             </Link>
 

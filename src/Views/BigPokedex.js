@@ -139,7 +139,7 @@ const BigPokedex = () => {
 
     return (
         <div>
-            <Link to={'/'} >
+            <Link to={'/pokedex'} >
                 <button>Home</button>
             </Link>
 

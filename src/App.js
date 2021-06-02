@@ -19,7 +19,6 @@ function App() {
 
 const [authData, SetAuthData] = useState(false);
 
-
     function logIn(data) {
 
         SetAuthData(AuthProvider.login(data));

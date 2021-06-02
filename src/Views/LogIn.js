@@ -15,7 +15,10 @@ const LogIn = ({onSubmit, askRegister})=>{
 
     return(
         <div className={'log-in'}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit( (values)=> {
+                onSubmit(values);
+                history.push('/pokedex');
+            })}>
 
                 <label htmlFor="input-email">Enter Email :</label>
                 <input type="email" name={'input-email'} {...register('email')} required={'required'}/>
@@ -23,7 +26,7 @@ const LogIn = ({onSubmit, askRegister})=>{
                 <label htmlFor="inputPassword">Password :</label>
                 <input type="password" {...register('password')} required={'required'}/>
 
-                <Link to={'/pokedex'} > <button type={'submit'}>Log in</button></Link>
+                <button type={'submit'} >submit</button>
                 <button type={"button"} onClick={askRegister}>Register</button>
 
             </form>
