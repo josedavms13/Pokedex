@@ -23,18 +23,34 @@ const AuthProvider = {
 
 
     login : (data)=>{
+        console.log('login');
+        console.log(data);
 
-        const key = data.userEmail;
+
+        const key = data.email;
         console.log(key);
         console.log(localStorage.getItem(key));
-        const user = JSON.parse(localStorage.getItem(data.userEmail));
+        const savedUser = JSON.parse(localStorage.getItem(data.email));
 
-        if(user){
-            if(data.userPassword === user.password){
+        if(savedUser){
+            if(data.password === savedUser.password){
                 console.log('logged in')
             }
             else{
                 console.log('Wrong Password')
+            }
+
+            console.log(data);
+            console.log(savedUser);
+
+            if(data.password === savedUser.password){
+                console.log('correct Password')
+                return {
+                    name : savedUser.user,
+                    isAuth : true,
+                }
+            }else{
+                return {isAuth: false}
             }
 
 
@@ -44,16 +60,6 @@ const AuthProvider = {
             console.log(`This user doesn't exist`)
         }
 
-        console.log(data);
-        console.log(user);
-
-        // if(data.password === user.password){
-        //     console.log('correct Password')
-        // }else{
-        //     console.log('incorrect password')
-        // }
-        // console.log('login');
-        // console.log(data);
 
 
 

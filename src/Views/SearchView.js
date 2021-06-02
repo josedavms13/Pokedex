@@ -6,7 +6,9 @@ import NameSearch from "../components/NameSearch";
 import getPokemons from "../services/getPokemons";
 import sortObjectFunction from "../utilities/sortObjectFunction";
 import getTypes from "../services/getTypes";
-import {Link} from "react-router-dom";
+import useUser from "../hooks/useUser";
+import {Link, withRouter} from "react-router-dom";
+import LogOut from "../components/LogOut";
 
 const SearchView = ({handleSubmit})=>{
 
@@ -16,8 +18,8 @@ const SearchView = ({handleSubmit})=>{
     let PokeFETCHDONE = false;
     let TypeFETCHDONE = false;
 
+    const {name} = useUser();
 
-    const [searchMethod, SetSearchMethod] = useState(0);
     const [inputValue, SetInputValue] = useState(null)
 
     const [textInputToggle, SetTextInputToggle] = useState(false);
@@ -36,7 +38,6 @@ const SearchView = ({handleSubmit})=>{
 
         switch (e) {
             case 'none-selected':
-                SetSearchMethod(e);
                 SetTextInputToggle(false);
                 SetSelectTypesToggle(false);
                 SetAbilityToggle(false);
@@ -44,7 +45,6 @@ const SearchView = ({handleSubmit})=>{
                 break
             case 'name':
                 setSearchByName();
-                SetSearchMethod(e);
                 SetTextInputToggle(true);
                 SetSelectTypesToggle(false);
                 SetAbilityToggle(false);
@@ -52,7 +52,6 @@ const SearchView = ({handleSubmit})=>{
                 break
             case 'type':
                 setSearchByType();
-                SetSearchMethod(e);
                 SetTextInputToggle(false);
                 SetSelectTypesToggle(true);
                 SetAbilityToggle(false);
@@ -60,7 +59,6 @@ const SearchView = ({handleSubmit})=>{
                 break
             case 'ability':
                 setSearchByAbilities()
-                SetSearchMethod(e);
 
                 SetAbilityToggle(true);
                 SetTextInputToggle(false);
@@ -133,7 +131,7 @@ const SearchView = ({handleSubmit})=>{
 
     return(
         <div>
-
+            <h1>Hello {name}</h1>
             <div>
                 <label htmlFor="search-type">Search by...</label>
 
@@ -177,4 +175,4 @@ const SearchView = ({handleSubmit})=>{
 
     )
 }
-export default SearchView
+export default withRouter(SearchView);

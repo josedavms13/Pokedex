@@ -10,10 +10,6 @@ const SignUp = ({signUpSubmit, call})=>{
     const {handleSubmit, register } = useForm()
 
 
-    const [passwordToCheck, SetPasswordToCheck] = useState('')
-
-
-
 
 
     return(
@@ -27,8 +23,6 @@ const SignUp = ({signUpSubmit, call})=>{
                 <label htmlFor="user-email">Email</label>
                 <input type="email" {...register('email')}/>
 
-                {/*<label htmlFor="password">Password</label>*/}
-                {/*<input type="password" onChange={(e)=>{SetPasswordToCheck(e.target.value)}}/>*/}
 
                 <label htmlFor="confirm">Password</label>
                 <input type="password" {...register('password')}/>
