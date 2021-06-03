@@ -11,13 +11,16 @@ import {useEffect, useState} from "react";
 import useUser from "./hooks/useUser";
 import UserContext from "./context/UserContext";
 import ProtectedRoute from "./provider/ProtectedRoute";
+import ThemeContext from "./context/ThemeContext";
 
 
 export default App;
 
 function App() {
 
-const [authData, SetAuthData] = useState(false);
+
+    const [theme, SetTheme] = useState('red')
+    const [authData, SetAuthData] = useState(false);
 
     function logIn(data) {
 
@@ -26,9 +29,9 @@ const [authData, SetAuthData] = useState(false);
 
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log(authData);
-    },[authData])
+    }, [authData])
 
     const [registerToggle, SetRegisterToggle] = useState(false)
 
@@ -42,50 +45,53 @@ const [authData, SetAuthData] = useState(false);
 
     return (
         <UserContext.Provider value={authData}>
-            <Router>
-                <Switch>
+            <ThemeContext.Provider value={theme}>
+                <Router>
+                    <Switch>
 
-                    <Route path={`/pokedex/abilities/:ability`}>
-                        <PokedexAbilities/>
-                    </Route>
+                        <Route path={`/pokedex/abilities/:ability`}>
+                            <PokedexAbilities/>
+                        </Route>
 
-                    <Route path={`/pokedex/pokemon/:name`}>
-                        <BigPokedex/>
-                    </Route>
+                        <Route path={`/pokedex/pokemon/:name`}>
+                            <BigPokedex/>
+                        </Route>
 
-                    <Route path={`/pokedex/types/:type`}>
-                        <PokedexTypes/>
-                    </Route>
+                        <Route path={`/pokedex/types/:type`}>
+                            <PokedexTypes/>
+                        </Route>
 
-                    <Route path={'/pokedex'}>
-                        <ProtectedRoute path={'/pokedex'} component={SearchView} isAuth={authData.isAuth}/>
+                        <Route path={'/pokedex'}>
+                            <ProtectedRoute path={'/pokedex'} component={SearchView} isAuth={authData.isAuth}/>
 
-                    </Route>
+                        </Route>
 
-                    <Route path={'/login'}>
-                        <LogIn askRegister={() => SetRegisterToggle(true)} onSubmit={(data) => {
-                            logIn(data)}}/>
-                    </Route>
+                        <Route path={'/login'}>
+                            <LogIn askRegister={() => SetRegisterToggle(true)} onSubmit={(data) => {
+                                logIn(data)
+                            }}/>
+                        </Route>
 
-                    <Route path="/">
-                        <Redirect to={'/login'} />
-                    </Route>
+                        <Route path="/">
+                            <Redirect to={'/login'}/>
+                        </Route>
 
 
-                </Switch>
+                    </Switch>
 
-                {registerToggle &&
-                <div className={'sign-up'}>
-                    <SignUp signUpSubmit={(data) => {
-                        register(data)
-                    }}/>
-                    <button onClick={() => {
-                        SetRegisterToggle(false)
-                    }}>Cancel
-                    </button>
-                </div>}
+                    {registerToggle &&
+                    <div className={'sign-up'}>
+                        <SignUp signUpSubmit={(data) => {
+                            register(data)
+                        }}/>
+                        <button onClick={() => {
+                            SetRegisterToggle(false)
+                        }}>Cancel
+                        </button>
+                    </div>}
 
-            </Router>
+                </Router>
+            </ThemeContext.Provider>
         </UserContext.Provider>
 
 
