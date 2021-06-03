@@ -1,4 +1,6 @@
 
+
+/*begins SEARCH VIEW -------------------------*/
 .search-view{
 
     font-size: 2vw;
@@ -50,6 +52,23 @@
 
 }
 
+.search-view .header .tittle img{
+    width: 10vw;
+}
+.search-view .header .tittle img:hover{
+    animation-name: poke-spiner;
+    animation-duration: 2s;
+}
+
+@keyframes poke-spiner {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 .search-view .search-mode-selector{
     width: 100%;
 
@@ -66,9 +85,10 @@
 
     font-size: 1.5vw;
     font-weight: bold;
+    margin-left: 4%;
 }
 .search-mode-selector option{
-    font-size: 0.5vw;
+    font-size: 1.5vw;
     width: 10vw;
 
 }
@@ -83,7 +103,10 @@
     font-weight: bold;
 }
 
+/*ends SEARCH VIEW -------------------------*/
 
+
+/*begins SEARCH BY NAME ----------------------------*/
 
 .search-by-name{
     position: absolute;
@@ -121,6 +144,7 @@
     font-weight: bold;
 }
 
+
 .search-by-name .name-search button:hover{
     background: #51c7ff;
     color: black;
@@ -131,19 +155,24 @@
 
     position: absolute;
     right: 0;
-    width: 20vw;
+    width: 25vw;
     height: 70vh;
 
     box-sizing: border-box;
-    overflow: scroll;
+    overflow: auto;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+.name-search .poke-suggest button{
+    width: 90%;
+    margin-top: 5%;
+    margin-right: 2%;
+}
+
 .poke-suggest button{
-    width: 100vw;
 
     background: #113671;
     border-radius: 20px;
@@ -160,6 +189,10 @@
     border: black solid 2px;
 }
 
+/*ends SEARCH BY NAME ----------------------------*/
+
+
+/*begins SEARCH BY TYPE ---------------------------*/
 .search-by-type{
 
 
@@ -178,15 +211,16 @@
 }
 
 .search-by-type select{
-    padding: 2%;
+    padding: 1.5%;
     font-size: 3vw;
+
 
     width: 40%;
 
 }
 
 .search-by-type option{
-    font-size: 0.5vw;
+    font-size: 1.5vw;
 
 
 }
@@ -196,3 +230,61 @@
 
 
  }
+
+/*ends SEARCH BY TYPE ---------------------------*/
+
+/*begins SEARCH BY ABILITY ---------------------------*/
+
+
+.search-by-ability{
+    position: absolute;
+    box-sizing: border-box;
+    padding: 5%;
+
+    top: 10vh;
+    height: 80vh;
+
+    width: 60vw;
+    right: 2vw;
+
+    background: #51c7ff;
+}
+
+.search-by-ability .search-options .header{
+    background: red;
+    height: 30vh;
+    width: 100%;
+
+    font-size: 1.5vw;
+}
+
+.filter-input label{
+    margin-right: 5%;
+}
+
+.ability-block{
+    padding: 5%;
+    background: #113671;
+    margin-top: 2%;
+    box-sizing: border-box;
+    overflow: auto;
+    height: 30vh;
+
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+
+}
+
+.ability-block button{
+    width: 10vw;
+    height: 5vh;
+}
+
+
+
+
+
+
+
+
+/*begins SEARCH BY ABILITY ---------------------------*/

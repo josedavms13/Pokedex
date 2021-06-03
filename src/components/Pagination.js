@@ -1,5 +1,5 @@
 import {useState} from "react";
-
+import './ComponentsCss/pagination.css'
 
 const Pagination = ({resultsPerPage, totalResults, pagination})=>{
 
@@ -13,25 +13,6 @@ const Pagination = ({resultsPerPage, totalResults, pagination})=>{
 
     }
 
-    const [allButtonState, SetAllButtonState] = useState(false)
-    const [buttonLegend, SetButtonLegend] = useState('All')
-    const allButtonHandler =()=>{
-
-        SetAllButtonState(!allButtonState);
-
-        // Show 30
-        if(allButtonState){
-            pagination(1);
-            SetButtonLegend('All')
-        }
-
-        // Show ALL
-        else {
-            pagination(0);
-            SetButtonLegend('pag 1')
-
-        }
-    }
 
 
     return(
@@ -39,7 +20,6 @@ const Pagination = ({resultsPerPage, totalResults, pagination})=>{
 
                 {pageNumber.map((number =>(<button onClick={(e)=> pagination(e.target.value)} value={number} key={number}>{number}</button>
                 )))}
-                <button onClick={()=>allButtonHandler()}>{buttonLegend}</button>
 
         </nav>
     )

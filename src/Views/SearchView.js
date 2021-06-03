@@ -12,6 +12,8 @@ import LogOut from "../components/LogOut";
 
 import './ViewsCss/SearchView.css'
 
+import redPokeball from '../media/pokeballs/redPokeball.png'
+
 const SearchView = ({handleSubmit}) => {
 
 
@@ -135,6 +137,8 @@ const SearchView = ({handleSubmit}) => {
                 <div className="tittle">
 
                     <h1>Hello {name}</h1>
+                    <img src={redPokeball} alt=""/>
+
                     <LogOut/>
                 </div>
                 <div className={'search-mode-selector'}>
@@ -175,8 +179,10 @@ const SearchView = ({handleSubmit}) => {
             </div>}
 
 
-            {(abilityToggle && abilitySearchData) &&
-            <AbilitySearch abilitiesList={abilitySearchData} abilitySelected={(data) => searchByAbility(data)}/>}
+            {(abilityToggle && abilitySearchData) && <div className={'search-by-ability-container'}>
+                <AbilitySearch abilitiesList={abilitySearchData} abilitySelected={(data) => searchByAbility(data)}/>
+            </div>}
+
 
 
         </div>
