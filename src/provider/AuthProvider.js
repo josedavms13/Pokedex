@@ -57,7 +57,10 @@ const AuthProvider = {
 
         }
         else{
-            console.log(`This user doesn't exist`)
+            return{
+                name : null,
+                isAuth: false
+            }
         }
 
 

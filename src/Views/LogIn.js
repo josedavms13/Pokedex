@@ -6,13 +6,16 @@ import './ViewsCss/login.css'
 import redPokeball from '../media/pokeballs/redPokeball.png'
 import emptyPokeball from '../media/pokeballs/emtyPokeball.png'
 
-const LogIn = ({onSubmit, askRegister}) => {
+const LogIn = ({onSubmit, askRegister, userDontExist}) => {
 
 
     const {handleSubmit, register} = useForm();
 
     let history = useHistory();
 
+useEffect(()=>{
+    console.log(userDontExist)
+},[userDontExist])
 
     const [pokeImage, SetPokeImage] = useState('../media/pokeballs/redPokeball.png');
 
@@ -43,6 +46,10 @@ const LogIn = ({onSubmit, askRegister}) => {
                 </form>
             </div>
 
+            {userDontExist&&<div className="user-dont-exist">
+                <h1>The email entered is not registered</h1>
+                <h2>Please sign up</h2>
+            </div>}
 
 
         </div>

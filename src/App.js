@@ -22,6 +22,7 @@ function App() {
     const [theme, SetTheme] = useState('red')
     const [authData, SetAuthData] = useState(false);
 
+    const [userDontExist, SetUserDontExist] = useState(false);
     function logIn(data) {
 
         SetAuthData(AuthProvider.login(data));
@@ -29,11 +30,27 @@ function App() {
 
     }
 
+
+
+    function userDontExistSeq(){
+
+        SetUserDontExist(true);
+
+        setTimeout(()=>{
+            SetUserDontExist(false);
+        },2000)
+
+    }
+
     useEffect(() => {
-        console.log(authData);
+        if(authData){
+            if(authData.name=== null){
+                userDontExistSeq();
+            }
+        }
     }, [authData])
 
-    const [registerToggle, SetRegisterToggle] = useState(false)
+    const [registerToggle, SetRegisterToggle] = useState(false);
 
     function register(data) {
 
@@ -67,7 +84,7 @@ function App() {
                         </Route>
 
                         <Route path={'/login'}>
-                            <LogIn askRegister={() => SetRegisterToggle(true)} onSubmit={(data) => {
+                            <LogIn userDontExist={userDontExist} askRegister={() => SetRegisterToggle(true)} onSubmit={(data) => {
                                 logIn(data)
                             }}/>
                         </Route>
@@ -80,14 +97,10 @@ function App() {
                     </Switch>
 
                     {registerToggle &&
-                    <div className={'sign-up'}>
-                        <SignUp signUpSubmit={(data) => {
+                    <div>
+                        <SignUp cancel={()=>{SetRegisterToggle(false)}} signUpSubmit={(data) => {
                             register(data)
                         }}/>
-                        <button onClick={() => {
-                            SetRegisterToggle(false)
-                        }}>Cancel
-                        </button>
                     </div>}
 
                 </Router>

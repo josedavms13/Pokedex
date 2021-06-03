@@ -1,0 +1,79 @@
+
+
+.sign-up{
+    position: absolute;
+    z-index: 1000;
+    top: 10vh;
+    left: 10vw;
+
+
+    height: 80vh;
+    width: 80vw;
+    background: #84b5ee;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+}
+
+.sign-up>h1{
+    font-size: 4vw;
+    border-bottom: #152238 solid 2px;
+}
+
+.sign-up>img{
+    width: 10vw;
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    transform: rotate(25deg);
+}
+
+.sign-up>form{
+    display: flex;
+    justify-content: space-between;
+
+    flex-direction: column;
+    height: 50vh;
+    width: 15vw;
+
+    font-size: 1.5vw;
+}
+
+.sign-up>form>input{
+    height: 3vh;
+    font-size: 1vw;
+}
+
+
+
+
+.sign-up button{
+    margin: 10px;
+    height: 5vh;
+    border-radius: 10px;
+
+    font-size: 1vw;
+}
+
+.password-dont-match{
+    height: 40vh;
+    width: 30vw;
+
+    left: 25vw;
+
+    background: aquamarine;
+    position: absolute;
+    z-index: 5000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    border-radius: 25px;
+}
+
