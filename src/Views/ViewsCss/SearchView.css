@@ -1,0 +1,198 @@
+
+.search-view{
+
+    font-size: 2vw;
+
+    width: 100vw;
+    height: 100vh;
+
+    box-sizing: border-box;
+
+    background: #113671;
+
+    color: #81d5ff;
+}
+
+
+.search-view .header{
+
+    box-sizing: border-box;
+
+    height: 100vh;
+    width: 35vw;
+    padding: 1%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    background: #001b4b;
+
+    border-right: #51c7ff solid 3px;
+
+
+
+}
+
+.search-view .header .tittle{
+    background: #152238;
+    width: 100%;
+
+    display: flex;
+
+    border-radius: 50px;
+    border: #51c7ff solid 2px;
+
+    justify-content: center;
+    align-items: center;
+
+    padding-left: 10%;
+
+}
+
+.search-view .search-mode-selector{
+    width: 100%;
+
+    margin-left: 4vw;
+
+    height: 40vh;
+
+
+}
+
+.search-mode-selector>select{
+
+    padding: 1%;
+
+    font-size: 1.5vw;
+    font-weight: bold;
+}
+.search-mode-selector option{
+    font-size: 0.5vw;
+    width: 10vw;
+
+}
+
+.logout-button{
+    width: 30%;
+    margin: 6%;
+    margin-top: -14vh;
+
+    height: 5vh;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+
+
+.search-by-name{
+    position: absolute;
+    right: 3vw;
+    height: 70vh;
+    width: 50vw;
+
+    display: flex;
+    align-items: center;
+}
+
+.search-by-name .name-search{
+    font-size: 2vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-by-name .name-search input{
+    font-size: 2vw;
+    margin: 5%;
+}
+
+.search-by-name .name-search button{
+
+    font-size: 2vw;
+    padding: 5%;
+    width: 12vw;
+
+    border-radius: 20px;
+    background: #1753a7;
+    color: #69b5fc;
+
+    font-weight: bold;
+}
+
+.search-by-name .name-search button:hover{
+    background: #51c7ff;
+    color: black;
+}
+
+.poke-suggest{
+
+
+    position: absolute;
+    right: 0;
+    width: 20vw;
+    height: 70vh;
+
+    box-sizing: border-box;
+    overflow: scroll;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.poke-suggest button{
+    width: 100vw;
+
+    background: #113671;
+    border-radius: 20px;
+    border: #51c7ff solid 2px;
+    color: #51c7ff;
+
+
+}
+
+.poke-suggest button:hover{
+    background: #03a566;
+    font-weight: bold;
+    color: black;
+    border: black solid 2px;
+}
+
+.search-by-type{
+
+
+    position: absolute;
+
+    height: 70vh;
+    width: 50vw;
+    top: 15vh;
+    right: 8vw;
+
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-by-type select{
+    padding: 2%;
+    font-size: 3vw;
+
+    width: 40%;
+
+}
+
+.search-by-type option{
+    font-size: 0.5vw;
+
+
+}
+.search-by-type button{
+    font-size: 3vw;
+    margin: 10%
+
+
+ }

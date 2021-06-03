@@ -1,3 +1,4 @@
+import '../Views/ViewsCss/SearchView.css'
 
 const LogOut =()=>{
 
@@ -8,7 +9,7 @@ const LogOut =()=>{
 
 
     return(
-        <button onClick={reset}>LogOut</button>
+        <button className={'logout-button'} onClick={reset}>LogOut</button>
     )
 }
 export default LogOut

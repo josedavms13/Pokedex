@@ -10,8 +10,9 @@ import useUser from "../hooks/useUser";
 import {Link, withRouter} from "react-router-dom";
 import LogOut from "../components/LogOut";
 
-const SearchView = ({handleSubmit})=>{
+import './ViewsCss/SearchView.css'
 
+const SearchView = ({handleSubmit}) => {
 
 
     let AbilityFETCHDONE = false;
@@ -24,7 +25,7 @@ const SearchView = ({handleSubmit})=>{
 
     const [textInputToggle, SetTextInputToggle] = useState(false);
     const [selectTypesToggle, SetSelectTypesToggle] = useState(false);
-    const [abilityToggle, SetAbilityToggle]= useState(false);
+    const [abilityToggle, SetAbilityToggle] = useState(false);
 
 
     const [abilitySearchData, SetAbilitySearchData] = useState(null);
@@ -32,7 +33,7 @@ const SearchView = ({handleSubmit})=>{
     const [pokemonsSearchData, SetPokemonsSearchData] = useState(null);
 
 
-    const changeMethod = (e)=>{
+    const changeMethod = (e) => {
         // if user choose name has to type in the text field.
         // if user choose search by type has to select it.
 
@@ -71,12 +72,13 @@ const SearchView = ({handleSubmit})=>{
         }
     }
 
-    const setSearchByName = ()=>{
+    const setSearchByName = () => {
 
 
-        if(!PokeFETCHDONE){
+        if (!PokeFETCHDONE) {
             getPokemons()
-                .then((data)=>{SetPokemonsSearchData(sortObjectFunction(data.results))
+                .then((data) => {
+                    SetPokemonsSearchData(sortObjectFunction(data.results))
                 })
             PokeFETCHDONE = true;
         }
@@ -84,9 +86,9 @@ const SearchView = ({handleSubmit})=>{
     }
 
 
-    const setSearchByType =()=>{
+    const setSearchByType = () => {
 
-        if(!TypeFETCHDONE) {
+        if (!TypeFETCHDONE) {
             getTypes()
                 .then(data => SetPokeTypes(data.results));
 
@@ -94,10 +96,10 @@ const SearchView = ({handleSubmit})=>{
         }
     }
 
-    const setSearchByAbilities = ()=>{
+    const setSearchByAbilities = () => {
 
 
-        if(!AbilityFETCHDONE){
+        if (!AbilityFETCHDONE) {
             getAbilities()
                 .then(data => {
                     SetAbilitySearchData(sortByName(data.results));
@@ -107,71 +109,77 @@ const SearchView = ({handleSubmit})=>{
     }
 
 
-
-    const searchByName =(data)=>{
+    const searchByName = (data) => {
 
         SetInputValue(data);
 
 
+    }
+
+    const searchByType = () => {
+
 
     }
 
-    const searchByType =()=>{
 
-
-
-    }
-
-
-    const searchByAbility = (data)=>{
+    const searchByAbility = (data) => {
         SetInputValue(data);
 
     }
 
 
-    return(
-        <div>
-            <LogOut />
-            <h1>Hello {name}</h1>
-            <div>
-                <label htmlFor="search-type">Search by...</label>
+    return (
+        <div className={'search-view'}>
+            <div className="header">
 
-                <select name="search-type" id="search-type" onChange={(e) => {
-                    changeMethod(e.target.value)
-                }}>
-                    <option value="none-selected">Select one</option>
-                    <option value="name">Name</option>
-                    <option value="type">Type</option>
-                    <option value="ability">Ability</option>
+                <div className="tittle">
+
+                    <h1>Hello {name}</h1>
+                    <LogOut/>
+                </div>
+                <div className={'search-mode-selector'}>
+                    <h5>Please select a mode to search</h5>
+
+                    <label htmlFor="search-type">Search by...</label>
+
+                    <select name="search-type" id="search-type" onChange={(e) => {
+                        changeMethod(e.target.value)
+                    }}>
+                        <option value="none-selected">Select one</option>
+                        <option value="name">Name</option>
+                        <option value="type">Type</option>
+                        <option value="ability">Ability</option>
+                    </select>
+                </div>
+
+                {(textInputToggle && pokemonsSearchData) &&
+                <div className="search-by-name">
+                    <NameSearch pokemonList={pokemonsSearchData} searchResult={(data) => searchByName(data)}/>
+                </div>}
+            </div>
+            {(selectTypesToggle && pokeTypes) &&
+            <div className="search-by-type">
+                <h1>Select type</h1>
+                <select name="type-selection" id="type-selection" onChange={(e) => SetInputValue(e.target.value)}>
+                    {pokeTypes.map((element) => {
+                        return <option value={element.name} key={element.name}>{element.name}</option>
+                    })}
                 </select>
 
-                {(textInputToggle&&pokemonsSearchData)&&
-                <div className="search-by-name">
-                    <NameSearch pokemonList={pokemonsSearchData} searchResult={(data)=> searchByName(data)} />
-                </div>}
-
-                {(selectTypesToggle&&pokeTypes)&&
-                <div className="search-by-type">
-                    <select name="type-selection" id="type-selection" onChange={(e)=> SetInputValue(e.target.value)}>
-                        {pokeTypes.map((element) => {
-                            return <option value={element.name} key={element.name}>{element.name}</option>
-                        })}
-                    </select>
-
-                    <Link to={`/pokedex/types/${inputValue}`} > <button onClick={()=>{searchByType()}}>Submit</button></Link>
-                </div>}
+                <Link to={`/pokedex/types/${inputValue}`}>
+                    <button onClick={() => {
+                        searchByType()
+                    }}>Submit
+                    </button>
+                </Link>
+            </div>}
 
 
-                {(abilityToggle && abilitySearchData) && <AbilitySearch abilitiesList={abilitySearchData} abilitySelected={(data)=>searchByAbility(data)} />}
-
-            </div>
-
-
-
+            {(abilityToggle && abilitySearchData) &&
+            <AbilitySearch abilitiesList={abilitySearchData} abilitySelected={(data) => searchByAbility(data)}/>}
 
 
         </div>
-
 
 
     )

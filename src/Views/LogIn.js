@@ -24,7 +24,11 @@ useEffect(()=>{
 
 
             <div className="login-form">
-                <h1>Welcome To Pokedex</h1>
+                <div className="title">
+
+                    <h1>Pokedex web</h1>
+                    <h1>Welcome</h1>
+                </div>
                 <div className={"poke-image"}>
                     <div className="center-circle"> </div>
                     <div className="center-line"> </div>

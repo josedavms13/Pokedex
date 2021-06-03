@@ -35,12 +35,14 @@
     font-size: 2vw;
 }
 
-.login-form>h1{
+.title{
+    width: 40vw;
     position: absolute;
     z-index: 3;
 
     background: rgba(3, 12, 28, 0.57);
     backdrop-filter: blur(10px);
+    border-radius: 30px;
 
     top: 10%;
     border-bottom: #51c7ff solid 1px;
