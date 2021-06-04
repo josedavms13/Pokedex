@@ -1,0 +1,26 @@
+
+
+.pagination button{
+
+    margin-top: 3%;
+
+    background: #001b4b;
+    color: #51c7ff;
+
+    font-size: 1vw;
+
+    width: 2.5vw;
+    height: 4vh;
+
+    border-radius: 0.3vmax;
+}
+
+
+.pagination button:hover{
+
+    background: #34d5a7;
+    color: #001b4b;
+    cursor: pointer;
+    font-weight:bold;
+
+}

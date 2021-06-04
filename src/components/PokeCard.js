@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import './ComponentsCss/PokeCard.css'
 import {Link} from 'react-router-dom'
+import firstUpperCase from "../utilities/firstUpperCase";
 const PokeCard = ({url}) => {
 
 
@@ -42,13 +43,13 @@ const PokeCard = ({url}) => {
 
                 <div className="poke-info">
 
-                    <h1>{pokeName}</h1>
+                    <h1>{firstUpperCase(pokeName)}</h1>
                     <h2>Type 1</h2>
-                    <h3>{pokeTypeA}</h3>
+                    <h3>{firstUpperCase(pokeTypeA)}</h3>
                     {
                         pokeTypeB && <div>
                             <h2>Type 2</h2>
-                            <h3>{pokeTypeB}</h3>
+                            <h3>{firstUpperCase(pokeTypeB)}</h3>
                         </div>
 
                     }

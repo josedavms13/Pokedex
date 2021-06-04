@@ -204,3 +204,13 @@
 .user-dont-exist>h2{
     font-size: 1vw;
 }
+
+.incorrect-password{
+    position: absolute;
+    z-index: 6000;
+
+    background: rgba(81, 199, 255, 0.83);
+
+    font-size: 2vw;
+    font-weight: bold;
+}

@@ -59,7 +59,7 @@ const AbilitySearch = ({abilitiesList, abilitySelected}) => {
 
                     <div className={'filter-input'}>
                         <label htmlFor="ability-name">Filter by Ability Name</label>
-                        <input type="text" name={'ability-name'} onChange={(e) => {
+                        <input type="text" placeholder={'ex: analytic... '} name={'ability-name'} onChange={(e) => {
                             SetSearchInput(e.target.value)
                         }}/>
                     </div>
@@ -85,7 +85,7 @@ const AbilitySearch = ({abilitiesList, abilitySelected}) => {
                 </div>
                     {abilitiesList &&
 
-                    <Pagination resultsPerPage={resultsPerPage} totalResults={abilitiesList.length}
+                    <Pagination currentPage={currentPage} resultsPerPage={resultsPerPage} totalResults={abilitiesList.length}
                                 pagination={(numb) => pagination(numb)}/>
 
                     }

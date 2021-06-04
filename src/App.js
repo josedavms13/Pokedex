@@ -23,6 +23,7 @@ function App() {
     const [authData, SetAuthData] = useState(false);
 
     const [userDontExist, SetUserDontExist] = useState(false);
+    const [wrongPasswordToggle, SetWrongPasswordToggle]  = useState(false);
     function logIn(data) {
 
         SetAuthData(AuthProvider.login(data));
@@ -32,12 +33,12 @@ function App() {
 
 
 
-    function userDontExistSeq(){
+    function errorShow(stateToChange){
 
-        SetUserDontExist(true);
+        stateToChange(true);
 
         setTimeout(()=>{
-            SetUserDontExist(false);
+            stateToChange(false);
         },2000)
 
     }
@@ -45,7 +46,10 @@ function App() {
     useEffect(() => {
         if(authData){
             if(authData.name=== null){
-                userDontExistSeq();
+                errorShow(SetUserDontExist);
+            }
+            if(!authData.isAuth){
+                errorShow(SetWrongPasswordToggle);
             }
         }
     }, [authData])
@@ -84,7 +88,7 @@ function App() {
                         </Route>
 
                         <Route path={'/login'}>
-                            <LogIn userDontExist={userDontExist} askRegister={() => SetRegisterToggle(true)} onSubmit={(data) => {
+                            <LogIn incorrectPassword={wrongPasswordToggle} userDontExist={userDontExist} askRegister={() => SetRegisterToggle(true)} onSubmit={(data) => {
                                 logIn(data)
                             }}/>
                         </Route>

@@ -5,6 +5,11 @@
     width: 30vw;
     display: flex;
 }
+
+.poke-card>.image-container>img{
+    width: 100%;
+}
+
 .poke-card:hover{
     background-color: orange;
 }

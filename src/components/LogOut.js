@@ -1,4 +1,5 @@
-import '../Views/ViewsCss/SearchView.css'
+import './ComponentsCss/logout.css'
+
 
 const LogOut =()=>{
 

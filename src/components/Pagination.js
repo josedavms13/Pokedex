@@ -1,10 +1,15 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import './ComponentsCss/pagination.css'
 
-const Pagination = ({resultsPerPage, totalResults, pagination})=>{
+const Pagination = ({resultsPerPage, totalResults, pagination, currentPage})=>{
 
     const pageNumber = [];
 
+    const [selected, SetSelected] = useState('')
+
+    useEffect(()=>{
+
+    },[currentPage])
 
     for(let i = 1; i<Math.ceil(totalResults / resultsPerPage); i++){
 
@@ -18,7 +23,7 @@ const Pagination = ({resultsPerPage, totalResults, pagination})=>{
     return(
         <nav className={'pagination'}>
 
-                {pageNumber.map((number =>(<button onClick={(e)=> pagination(e.target.value)} value={number} key={number}>{number}</button>
+                {pageNumber.map((number =>(<button className={selected} onClick={(e)=> pagination(e.target.value)} value={number} key={number}>{number}</button>
                 )))}
 
         </nav>

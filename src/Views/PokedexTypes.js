@@ -5,31 +5,30 @@ import ReactPaginate from 'react-paginate'
 import fetchByType from "../services/fetchByType";
 import PokeCard from "../components/PokeCard";
 
+import './ViewsCss/pokedexTypes.css'
 
 
-const PokedexTypes = ()=>{
+const PokedexTypes = () => {
 
 
     //region Get param from URL and fetch
 
-    const {type}= useParams()
+    const {type} = useParams()
 
     const [pokes, SetPokes] = useState(null);
 
 
-
-    useEffect(()=>{
-        if(type){
+    useEffect(() => {
+        if (type) {
 
             fetchByType(type)
-                .then(data=> SetPokes(data.pokemon))
+                .then(data => SetPokes(data.pokemon))
 
         }
-    },[type])
+    }, [type])
 
 
-
- // endregion get params from url and fetch
+    // endregion get params from url and fetch
 
     //region Paginate
 
@@ -45,50 +44,58 @@ const PokedexTypes = ()=>{
     const [pageCount, SetPageCount] = useState(null)
 
 
-    const [pagesToShow, SetPagesToShow]= useState(10)
+    const [pagesToShow] = useState(10)
 
-    useEffect(()=>{
-        if(pokes){
+    useEffect(() => {
+        if (pokes) {
             SetCardsToShow(pokes.slice(pagesViewed, pagesViewed + cardsPerPage))
-            SetPageCount( Math.ceil((pokes.length/cardsPerPage)))
+            SetPageCount(Math.ceil((pokes.length / cardsPerPage)))
         }
 
-    },[pokes, pageNumber, cardsPerPage, pagesViewed])
+    }, [pokes, pageNumber, cardsPerPage, pagesViewed])
 
 
-    function changePage({selected}){
+    function changePage({selected}) {
         SetPageNumber(selected);
 
 
     }
 
 
-
-
     //endregion paginate
 
-    return(
-        <div>
-            <Link to={'/pokedex'}>
-                <button>home</button>
-            </Link>
+    return (
+        <div className={'pokedex-types'}>
+            <div className="pokedex-header">
+                <h1>Pokedex type {type}</h1>
+                <Link to={'/pokedex'}>
+                    <button>home</button>
+                </Link>
+            </div>
 
-            {cardsToShow && cardsToShow.map((element, key)=>{
-               return ( <PokeCard url={element.pokemon.url} key={key}/>)
-            })}
-            <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'next'}
-                pageCount={pageCount}
-                pageRangeDisplayed={(pagesToShow-2)}
-                marginPagesDisplayed={0}
-                onPageChange={changePage}
-                containerClassName={'pagination'}
-                previousLinkClassName={'previous-button'}
-                nextLinkClassName={'nextButton'}
-                activeClassName={'active-Button'}
+            <div className="poke-card-container">
 
-            />
+
+                {cardsToShow && cardsToShow.map((element, key) => {
+                    return (<PokeCard url={element.pokemon.url} key={key}/>)
+                })}
+            </div>
+            <div className="pagination-container">
+                <ReactPaginate
+                    previousLabel={'Previous'}
+                    nextLabel={'next'}
+                    pageCount={pageCount}
+                    pageRangeDisplayed={(pagesToShow - 2)}
+                    marginPagesDisplayed={0}
+                    onPageChange={changePage}
+                    containerClassName={'pagination'}
+                    previousLinkClassName={'previous-button'}
+                    pageClassName={'page-button'}
+                    nextLinkClassName={'nextButton'}
+                    activeClassName={'active-Button'}
+
+                />
+            </div>
         </div>
     )
 }

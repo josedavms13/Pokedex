@@ -1,0 +1,103 @@
+
+.pokedex-types{
+    position: absolute;
+    top : 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    background: #001b4b;
+}
+
+.pokedex-types>.pokedex-header{
+
+    height: 10vh;
+}
+
+.pokedex-header>h1{
+    text-align: center;
+    font-size: 3vw;
+}
+
+.poke-card-container{
+    background: #152238;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.pagination-container{
+
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.pagination{
+    display: flex;
+    justify-content: space-around;
+    width: 50vw;
+
+    list-style: none;
+
+    cursor: pointer;
+
+
+}
+.page-button{
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+    width: 2vw;
+
+    background: #51c7ff;
+
+    border: #34d5a7 solid 4px;
+    border-radius: 20px;
+}
+.active-Button{
+    background: #03a566;
+
+    user-select: none;
+
+}
+
+.nextButton{
+    background: #34d5a7;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+    width: 4vw;
+
+    user-select: none;
+
+
+}
+
+.previous-button{
+    background: #34d5a7;
+    height: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1.5vw;
+    font-weight: bold;
+    text-align: center;
+    width: 6vw;
+
+    user-select: none;
+}
