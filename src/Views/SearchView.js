@@ -14,7 +14,7 @@ import './ViewsCss/SearchView.css'
 
 import redPokeball from '../media/pokeballs/redPokeball.png'
 
-const SearchView = ({handleSubmit}) => {
+const SearchView = () => {
 
 
     let AbilityFETCHDONE = false;
@@ -118,11 +118,6 @@ const SearchView = ({handleSubmit}) => {
 
     }
 
-    const searchByType = () => {
-
-
-    }
-
 
     const searchByAbility = (data) => {
         SetInputValue(data);
@@ -171,10 +166,7 @@ const SearchView = ({handleSubmit}) => {
                 </select>
 
                 <Link to={`/pokedex/types/${inputValue}`}>
-                    <button onClick={() => {
-                        searchByType()
-                    }}>Submit
-                    </button>
+                    <button >Submit </button>
                 </Link>
             </div>}
 
