@@ -112,19 +112,6 @@ const BigPokedex = () => {
     }, [type1])
 
 
-    //region Pending on future updates
-    useEffect(() => {
-
-        const speech = `${pokeName}, is a ${type1} type pokemon.
-        They are usually around ${height} tall, and have an average weight of ${weight}. 
-        
-        `
-
-
-    }, [pokeName, type1, height, weight])
-
-    //endregion pending on future updates
-
     //endregion get types details
 
     function toFirstUpper(string) {
@@ -170,12 +157,19 @@ const BigPokedex = () => {
                                 <h2>Speed: {baseSpeed}</h2>
                             </div>
                         </div>
+                        <div className="types-and-weight">
+                            <div className="types">
+                                <h2>Type 1 : {type1} </h2>
+                                {type2 && <h2>Type 2 : {type2} </h2>}
 
-                        <div className="types">
-                            <h2>Type 1 : {type1} </h2>
-                            {type2 && <h2>Type 2 : {type2} </h2>}
+                            </div>
 
+                            <div className="weight">
+                                <h2>Weight : {weight} Kg</h2>
+                                <h2> Height : {height} m</h2>
+                            </div>
                         </div>
+
                     </div>
 
                 </div>

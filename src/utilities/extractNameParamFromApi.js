@@ -2,7 +2,6 @@
 function extractNameParamFromApi(objectArray){
 
 
-    console.log(objectArray);
 
     const result = [];
 

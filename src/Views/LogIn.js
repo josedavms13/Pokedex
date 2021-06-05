@@ -1,10 +1,7 @@
 import {useForm} from "react-hook-form";
-import {useEffect} from "react";
 import {useHistory} from "react-router-dom";
 
 import './ViewsCss/login.css'
-import redPokeball from '../media/pokeballs/redPokeball.png'
-import emptyPokeball from '../media/pokeballs/emtyPokeball.png'
 
 const LogIn = ({onSubmit, askRegister, userDontExist, incorrectPassword}) => {
 
@@ -13,9 +10,6 @@ const LogIn = ({onSubmit, askRegister, userDontExist, incorrectPassword}) => {
 
     let history = useHistory();
 
-useEffect(()=>{
-    console.log(userDontExist)
-},[userDontExist])
 
 
     return (

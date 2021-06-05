@@ -109,14 +109,8 @@
     font-size: 1vw;
     display: flex;
 }
-.types{
-    padding-left: 5%;
-    margin-left: 5%;
 
-    border-left: #51c7ff solid 2px;
 
-    width: 40vw;
-}
 
 .basic-stat{
     display: flex;
@@ -128,6 +122,38 @@
 
 .basic-stat>h2 {
     margin-left: 1vw;
+}
+
+.types-and-weight{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20vw;
+
+    border-left: #0538f6 solid 3px;
+
+}
+
+.types{
+    width: 100%;
+    height: 50%;
+    padding-left: 5%;
+    margin-left: 5%;
+
+    border-bottom: #355df6 solid 3px;
+
+
+
+}
+
+.weight{
+    box-sizing: border-box;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 5%;
+
 }
 
 .strenght{

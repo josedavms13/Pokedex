@@ -5,7 +5,6 @@ function sortByName(fetchData) {
     const nameArray = [];
 
 
-    console.log(array);
     array.forEach((element) => {
         nameArray.push(element.name);
 
