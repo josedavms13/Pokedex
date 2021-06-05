@@ -7,6 +7,8 @@ import PokeCard from "../components/PokeCard";
 
 import './ViewsCss/pokedexTypes.css'
 import './ViewsCss/paginationTools.css'
+import './ViewsCss/homeButton.css'
+
 import firstUpperCase from "../utilities/firstUpperCase";
 
 

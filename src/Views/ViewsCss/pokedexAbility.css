@@ -58,33 +58,3 @@
 
 
 
-/*Home Button*/
-.home-button{
-    position: absolute;
-    top: 5vh;
-    left: 5vw;
-
-    height: 7vh;
-    width: 4vw;
-
-    border-radius: 20px;
-}
-.home-button button {
-    height: 100%;
-    width: 100%;
-
-    background: #073ba7;
-    font-size: 1vw;
-    font-weight: bold;
-    color: #51c7ff;
-    border-radius: 20px;
-
-    cursor: pointer;
-}
-
-.home-button button:hover{
-    background: #51c7ff;
-    color: #001b4b;
-}
-
-/*home button*/

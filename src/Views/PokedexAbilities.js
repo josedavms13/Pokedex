@@ -8,6 +8,7 @@ import fetchByAbility from "../services/fetchByAbility";
 
 import './ViewsCss/pokedexAbility.css'
 import './ViewsCss/paginationTools.css'
+import './ViewsCss/homeButton.css'
 
 import firstUpperCase from "../utilities/firstUpperCase";
 
