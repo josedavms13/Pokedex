@@ -16,10 +16,10 @@
 .pokedex-header>h1{
     text-align: center;
     font-size: 3vw;
+    color: #51c7ff;
 }
 
 .poke-card-container{
-    background: #152238;
     height: 70vh;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,6 @@
 
     list-style: none;
 
-    cursor: pointer;
 
 
 }
@@ -53,10 +52,12 @@
     justify-content: center;
     align-items: center;
 
-    font-size: 1.5vw;
+    font-size: 1.8vw;
     font-weight: bold;
     text-align: center;
-    width: 2vw;
+    width: 1.8vw;
+
+    cursor: pointer;
 
     background: #51c7ff;
 
@@ -100,4 +101,32 @@
     width: 6vw;
 
     user-select: none;
+}
+
+.home-button{
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+
+    height: 7vh;
+    width: 4vw;
+
+    border-radius: 20px;
+}
+.home-button button {
+    height: 100%;
+    width: 100%;
+
+    background: #073ba7;
+    font-size: 1vw;
+    font-weight: bold;
+    color: #51c7ff;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+.home-button button:hover{
+    background: #51c7ff;
+    color: #001b4b;
 }

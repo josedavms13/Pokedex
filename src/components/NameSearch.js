@@ -38,8 +38,8 @@ const NameSearch = ({pokemonList, searchResult})=>{
     return(
         <div className={'name-search'}>
             <label htmlFor="{'search-name'}">Type name</label>
-            <input type="text" value={searchValues} name={'search-name'} onChange={(e)=>{SetSearchValues(e.target.value)}}/>
-            {suggestToggle && <div className={'poke-suggest'}>
+            <input placeholder={'ex: pikachu...'} type="text" value={searchValues} name={'search-name'} onChange={(e)=>{SetSearchValues(e.target.value)}}/>
+            {suggestToggle && <div className={'poke-suggest-container'}>
 
                 <PokeNameSuggest pokeList={arrayOfNames} searchFilter={searchValues} handleSubmit={(data)=>{SetSearchValues(data)}} />
             </div>}

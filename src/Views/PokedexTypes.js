@@ -6,6 +6,7 @@ import fetchByType from "../services/fetchByType";
 import PokeCard from "../components/PokeCard";
 
 import './ViewsCss/pokedexTypes.css'
+import firstUpperCase from "../utilities/firstUpperCase";
 
 
 const PokedexTypes = () => {
@@ -67,10 +68,13 @@ const PokedexTypes = () => {
     return (
         <div className={'pokedex-types'}>
             <div className="pokedex-header">
-                <h1>Pokedex type {type}</h1>
-                <Link to={'/pokedex'}>
-                    <button>home</button>
-                </Link>
+                <h1>Pokedex type {firstUpperCase(type)}</h1>
+                <div className="home-button">
+                    <Link to={'/pokedex'}>
+                        <button>HOME</button>
+                    </Link>
+                </div>
+
             </div>
 
             <div className="poke-card-container">

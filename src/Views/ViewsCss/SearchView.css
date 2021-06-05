@@ -150,29 +150,28 @@
     color: black;
 }
 
-.poke-suggest{
+.poke-suggest-container{
 
 
     position: absolute;
     right: 0;
     width: 25vw;
-    height: 70vh;
+    height: 60vh;
 
     box-sizing: border-box;
-    overflow: auto;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.name-search .poke-suggest button{
+.name-search .poke-suggest-container button{
     width: 90%;
     margin-top: 5%;
     margin-right: 2%;
 }
 
-.poke-suggest button{
+.poke-suggest-container button{
 
     background: #113671;
     border-radius: 20px;
@@ -182,11 +181,19 @@
 
 }
 
-.poke-suggest button:hover{
+.poke-suggest-container button:hover{
     background: #03a566;
     font-weight: bold;
     color: black;
     border: black solid 2px;
+}
+
+.poke-suggestion{
+
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+
 }
 
 /*ends SEARCH BY NAME ----------------------------*/

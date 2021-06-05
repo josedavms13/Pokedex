@@ -1,9 +1,38 @@
 
 
 .poke-card{
-    background-color: orangered;
-    width: 30vw;
+    background-color: #292f38;
     display: flex;
+
+    justify-content: space-around;
+
+    width: 40vw;
+    height: 9vh;
+
+    padding: 5%;
+
+    max-width: 600px;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 20px;
+
+
+    border: #51c7ff solid 1px;
+
+
+}
+
+.poke-card>.image-container{
+    width: 5vw;
+    background: rgba(193, 255, 250, 0.38);
+    border-radius: 20px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .poke-card>.image-container>img{
@@ -14,5 +43,46 @@
     background-color: orange;
 }
 .poke-info{
+
     height: 100%;
+    width: 80%;
+    padding: 1%;
+
+
+    display: flex;
+}
+
+.poke-name{
+    width: 60%;
+    border-right: #51c7ff solid 2px;
+
+}
+
+.poke-types{
+    margin: -2vh;
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 10%;
+    width: 15vw;
+
+    height: 100%;
+
+
+}
+
+.poke-name>h1{
+
+    font-size: 1vw;
+}
+
+.poke-types h2{
+
+    margin: 0;
+    font-size: 2vh;
+}
+
+.poke-types h3{
+    margin: 5%;
+    font-size: 1vw;
 }

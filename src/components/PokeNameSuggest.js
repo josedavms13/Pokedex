@@ -15,9 +15,7 @@ const PokeNameSuggest = ({pokeList, searchFilter, handleSubmit})=>{
 
 
 return(
-    <div>
-        <h1>Filter</h1>
-
+    <div className={'poke-suggestion'}>
         {pokeList.filter((element)=>{
             if(element.toLowerCase().includes(searchFilter.toLowerCase())){
                 return element
