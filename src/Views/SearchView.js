@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import { useState} from "react";
 import AbilitySearch from "../components/AbilitySearch";
 import getAbilities from "../services/getAbilities";
 import sortByName from "../utilities/sortByName";

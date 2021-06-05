@@ -17,7 +17,6 @@ const PokeCard = ({url}) => {
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
 
                 SetPokeName(data.name);
                 SetPokeTypeA(data.types[0].type.name);
@@ -28,7 +27,6 @@ const PokeCard = ({url}) => {
             });
 
 
-        console.log(url);
 
     }, [url])
 

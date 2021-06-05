@@ -36,7 +36,6 @@ const BigPokedex = () => {
 
     const [abilities, SetAbilities] = useState(null);
 
-    const [textToSpeech, SetTextToSpeech] = useState('')
 
     const [veryStrongAgainst, SetVeryStrongAgainst] = useState(null)
     const [notRecommendedAgainst, SetNotRecommendedAgainst] = useState(null)
@@ -53,7 +52,6 @@ const BigPokedex = () => {
 
             fetchByName(name)
                 .then((data) => {
-                    console.log(data)
 
                     SetImage(setImageFunct(data.sprites))
                     SetPokeName(data.name.toUpperCase());
@@ -95,7 +93,6 @@ const BigPokedex = () => {
     }
 
     useEffect(() => {
-        console.log(abilities);
     }, [abilities])
 
 
@@ -106,7 +103,6 @@ const BigPokedex = () => {
         if (type1) {
             fetchByType(type1.toLowerCase())
                 .then(data => {
-                    console.log(data);
 
                     SetVeryStrongAgainst(extractNameParamFromApi(data.damage_relations.double_damage_to))
                     SetNotRecommendedAgainst(extractNameParamFromApi(data.damage_relations.half_damage_to))
@@ -116,6 +112,7 @@ const BigPokedex = () => {
     }, [type1])
 
 
+    //region Pending on future updates
     useEffect(() => {
 
         const speech = `${pokeName}, is a ${type1} type pokemon.
@@ -126,6 +123,7 @@ const BigPokedex = () => {
 
     }, [pokeName, type1, height, weight])
 
+    //endregion pending on future updates
 
     //endregion get types details
 

@@ -1,7 +1,6 @@
 import './ViewsCss/SignUp.css'
 import {useForm} from "react-hook-form";
 import {useState} from "react";
-import {Link} from "react-router-dom";
 import blackPokeball from '../media/pokeballs/blackPokeball.png'
 
 const SignUp = ({signUpSubmit, call, cancel})=>{

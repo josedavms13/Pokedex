@@ -39,7 +39,6 @@ const AbilitySearch = ({abilitiesList, abilitySelected}) => {
     // Change page
 
     const pagination = (numb) => {
-        console.log(numb);
         if (numb !== 0) {
             SetCurrentPage(numb);
             SetResultsPerPage(30);

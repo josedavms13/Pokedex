@@ -1,6 +1,6 @@
 import {useForm} from "react-hook-form";
-import {useEffect, useState} from "react";
-import {Link, Redirect, useHistory} from "react-router-dom";
+import {useEffect} from "react";
+import {useHistory} from "react-router-dom";
 
 import './ViewsCss/login.css'
 import redPokeball from '../media/pokeballs/redPokeball.png'

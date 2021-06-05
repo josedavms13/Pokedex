@@ -1,16 +1,5 @@
-import {useEffect, useState} from "react";
 
 const PokeNameSuggest = ({pokeList, searchFilter, handleSubmit})=>{
-
-    const [pokeListOptionsToggle, SetPokeListOptionsToggle] = useState(null);
-    useEffect(()=>{
-
-        if(pokeList && searchFilter){
-            console.log(pokeList);
-            SetPokeListOptionsToggle(true);
-        }
-
-    },[pokeList, searchFilter])
 
 
 

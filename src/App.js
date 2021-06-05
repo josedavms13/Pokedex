@@ -8,7 +8,6 @@ import LogIn from "./Views/LogIn";
 import AuthProvider from "./provider/AuthProvider";
 import SignUp from "./Views/SignUp";
 import {useEffect, useState} from "react";
-import useUser from "./hooks/useUser";
 import UserContext from "./context/UserContext";
 import ProtectedRoute from "./provider/ProtectedRoute";
 import ThemeContext from "./context/ThemeContext";
@@ -18,8 +17,8 @@ export default App;
 
 function App() {
 
-
-    const [theme, SetTheme] = useState('red')
+    //theme change pending on futures updates
+    const [theme] = useState('red')
     const [authData, SetAuthData] = useState(false);
 
     const [userDontExist, SetUserDontExist] = useState(false);
@@ -48,9 +47,13 @@ function App() {
             if(authData.name=== null){
                 errorShow(SetUserDontExist);
             }
+        else{
             if(!authData.isAuth){
                 errorShow(SetWrongPasswordToggle);
+
             }
+            }
+
         }
     }, [authData])
 

@@ -1,8 +1,6 @@
 import {Link, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import ReactPaginate from 'react-paginate'
-
-import fetchByType from "../services/fetchByType";
 import PokeCard from "../components/PokeCard";
 import fetchByAbility from "../services/fetchByAbility";
 

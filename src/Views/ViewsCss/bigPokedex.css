@@ -93,6 +93,12 @@
 .big-poke-image{
     height: 50%;
     width: 50%;
+
+    transition: all 1s ease;
+}
+.big-poke-image:hover{
+    height: 80%;
+    width: 80%;
 }
 
 .big-poke-image>img{

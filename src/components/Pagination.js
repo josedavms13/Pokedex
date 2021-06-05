@@ -5,7 +5,7 @@ const Pagination = ({resultsPerPage, totalResults, pagination, currentPage})=>{
 
     const pageNumber = [];
 
-    const [selected, SetSelected] = useState('')
+    const [selected] = useState('')
 
     useEffect(()=>{
 
