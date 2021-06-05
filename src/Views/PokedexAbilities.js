@@ -6,6 +6,11 @@ import fetchByType from "../services/fetchByType";
 import PokeCard from "../components/PokeCard";
 import fetchByAbility from "../services/fetchByAbility";
 
+import './ViewsCss/pokedexAbility.css'
+import './ViewsCss/paginationTools.css'
+
+import firstUpperCase from "../utilities/firstUpperCase";
+
 
 const PokeAbilities = () => {
 
@@ -79,31 +84,43 @@ const PokeAbilities = () => {
     //endregion paginate
 
     return (
-        <div>
-            <Link to={'/pokedex'}>
-                <button>home</button>
-            </Link>
+        <div className={'pokedex-abilities'}>
+            <div className="header">
+                <h1>Pokedex habilities {firstUpperCase(ability)}</h1>
+                <div className="home-button">
+                    <Link to={'/pokedex'}>
+                        <button>HOME</button>
+                    </Link>
+                </div>
 
-            {noPokeMessageToggle&&<div className="no-pokes-available">
-<h1>There is no pokemons registered with that ability in database</h1>
+            </div>
+
+            {noPokeMessageToggle && <div className="no-pokes-available">
+                <h1>There is no pokemons registered with that ability in database</h1>
             </div>}
 
-            {cardsToShow && cardsToShow.map((element, key) => {
-                return (<PokeCard url={element.pokemon.url} key={key}/>)
-            })}
-            <ReactPaginate
-                previousLabel={'Previous'}
-                nextLabel={'next'}
-                pageCount={pageCount}
-                pageRangeDisplayed={(pagesToShow - 2)}
-                marginPagesDisplayed={0}
-                onPageChange={changePage}
-                containerClassName={'pagination'}
-                previousLinkClassName={'previous-button'}
-                nextLinkClassName={'nextButton'}
-                activeClassName={'active-Button'}
+            <div className="poke-cards-container">
 
-            />
+                {cardsToShow && cardsToShow.map((element, key) => {
+                    return (<PokeCard url={element.pokemon.url} key={key}/>)
+                })}
+            </div>
+            <div className="pagination-container">
+                <ReactPaginate
+                    previousLabel={'Previous'}
+                    nextLabel={'next'}
+                    pageCount={pageCount}
+                    pageRangeDisplayed={(pagesToShow - 2)}
+                    marginPagesDisplayed={0}
+                    onPageChange={changePage}
+                    containerClassName={'pagination'}
+                    previousLinkClassName={'previous-button'}
+                    pageClassName={'page-button'}
+                    nextLinkClassName={'nextButton'}
+                    activeClassName={'active-Button'}
+
+                />
+            </div>
         </div>
     )
 }

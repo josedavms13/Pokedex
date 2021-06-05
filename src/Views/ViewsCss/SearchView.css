@@ -232,11 +232,32 @@
 
 }
 .search-by-type button{
+
+    cursor: pointer;
+
     font-size: 3vw;
-    margin: 10%
+    margin: 10%;
+    background: #51c7ff;
+
+    height: 8vh;
+    width: 12vw;
+
+    border-radius: 15px;
 
 
  }
+
+.search-by-type button:hover{
+
+    background: #a1ecfa;
+
+    font-weight: bold;
+
+    border: black solid 3px;
+
+
+
+}
 
 /*ends SEARCH BY TYPE ---------------------------*/
 

@@ -27,82 +27,10 @@
     justify-content: space-around;
 }
 
-.pagination-container{
-
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.pagination{
-    display: flex;
-    justify-content: space-around;
-    width: 50vw;
-
-    list-style: none;
 
 
 
-}
-.page-button{
-    height: 4vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 1.8vw;
-    font-weight: bold;
-    text-align: center;
-    width: 1.8vw;
-
-    cursor: pointer;
-
-    background: #51c7ff;
-
-    border: #34d5a7 solid 4px;
-    border-radius: 20px;
-}
-.active-Button{
-    background: #03a566;
-
-    user-select: none;
-
-}
-
-.nextButton{
-    background: #34d5a7;
-    height: 4vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 1.5vw;
-    font-weight: bold;
-    text-align: center;
-    width: 4vw;
-
-    user-select: none;
-
-
-}
-
-.previous-button{
-    background: #34d5a7;
-    height: 4vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 1.5vw;
-    font-weight: bold;
-    text-align: center;
-    width: 6vw;
-
-    user-select: none;
-}
-
+/*Home Button -------------*/
 .home-button{
     position: absolute;
     top: 5vh;
@@ -130,3 +58,5 @@
     background: #51c7ff;
     color: #001b4b;
 }
+
+/* end Home Button -------------*/

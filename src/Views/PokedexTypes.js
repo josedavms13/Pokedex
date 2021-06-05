@@ -6,6 +6,7 @@ import fetchByType from "../services/fetchByType";
 import PokeCard from "../components/PokeCard";
 
 import './ViewsCss/pokedexTypes.css'
+import './ViewsCss/paginationTools.css'
 import firstUpperCase from "../utilities/firstUpperCase";
 
 
